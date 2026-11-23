@@ -1,0 +1,2189 @@
+{
+ "meta": {
+  "count": 4258,
+  "per_page": 3,
+  "next_cursor": "IlsxMzMuNjU2OTIsIDE2OTYxMTg0MDAwMDAsICdodHRwczovL29wZW5hbGV4Lm9yZy9XNDM4Nzc2NTc2NCddIg=="
+ },
+ "results": [
+  {
+   "id": "https://openalex.org/W4320857028",
+   "doi": "https://doi.org/10.1098/rsif.2022.0869",
+   "title": "Microgravity and immune cells",
+   "display_name": "Microgravity and immune cells",
+   "publication_year": 2023,
+   "publication_date": "2023-02-01",
+   "language": "en",
+   "type": "review",
+   "abstract_inverted_index": {
+    "The": [
+     0,
+     102
+    ],
+    "microgravity": [
+     1,
+     34,
+     54,
+     72,
+     119,
+     186
+    ],
+    "environment": [
+     2,
+     35
+    ],
+    "experienced": [
+     3
+    ],
+    "during": [
+     4
+    ],
+    "spaceflight": [
+     5
+    ],
+    "severely": [
+     6
+    ],
+    "impaired": [
+     7,
+     163
+    ],
+    "immune": [
+     8,
+     41,
+     62,
+     75,
+     126,
+     139,
+     153,
+     181
+    ],
+    "system,": [
+     9
+    ],
+    "making": [
+     10
+    ],
+    "astronauts": [
+     11
+    ],
+    "vulnerable": [
+     12
+    ],
+    "to": [
+     13,
+     28,
+     109,
+     134,
+     157
+    ],
+    "various": [
+     14
+    ],
+    "diseases": [
+     15
+    ],
+    "that": [
+     16,
+     71
+    ],
+    "seriously": [
+     17
+    ],
+    "threaten": [
+     18
+    ],
+    "the": [
+     19,
+     33,
+     51,
+     56,
+     69,
+     115,
+     121,
+     129,
+     136,
+     146,
+     178,
+     185,
+     195
+    ],
+    "health": [
+     20
+    ],
+    "of": [
+     21,
+     40,
+     53,
+     58,
+     68,
+     80,
+     114,
+     118,
+     125,
+     138,
+     148,
+     180,
+     197
+    ],
+    "astronauts.": [
+     22
+    ],
+    "Immune": [
+     23
+    ],
+    "cells": [
+     24,
+     42,
+     76,
+     140
+    ],
+    "are": [
+     25,
+     95,
+     106,
+     165
+    ],
+    "exceptionally": [
+     26
+    ],
+    "sensitive": [
+     27
+    ],
+    "changes": [
+     29
+    ],
+    "in": [
+     30,
+     55,
+     99,
+     120,
+     184
+    ],
+    "gravity": [
+     31
+    ],
+    "and": [
+     32,
+     60,
+     97,
+     162,
+     175,
+     200
+    ],
+    "can": [
+     36
+    ],
+    "affect": [
+     37
+    ],
+    "multiple": [
+     38
+    ],
+    "aspects": [
+     39
+    ],
+    "through": [
+     43
+    ],
+    "different": [
+     44,
+     78
+    ],
+    "mechanisms.": [
+     45
+    ],
+    "Previous": [
+     46
+    ],
+    "reports": [
+     47
+    ],
+    "have": [
+     48
+    ],
+    "mainly": [
+     49
+    ],
+    "summarized": [
+     50
+    ],
+    "role": [
+     52,
+     117
+    ],
+    "classification": [
+     57
+    ],
+    "innate": [
+     59
+    ],
+    "adaptive": [
+     61
+    ],
+    "cells,": [
+     63
+    ],
+    "lacking": [
+     64
+    ],
+    "an": [
+     65,
+     190
+    ],
+    "overall": [
+     66
+    ],
+    "grasp": [
+     67
+    ],
+    "laws": [
+     70
+    ],
+    "effects": [
+     73
+    ],
+    "on": [
+     74
+    ],
+    "at": [
+     77
+    ],
+    "stages": [
+     79
+    ],
+    "their": [
+     81
+    ],
+    "entire": [
+     82
+    ],
+    "developmental": [
+     83
+    ],
+    "process,": [
+     84
+    ],
+    "such": [
+     85,
+     144
+    ],
+    "as": [
+     86,
+     90,
+     92,
+     145
+    ],
+    "differentiation,": [
+     87
+    ],
+    "activation,": [
+     88
+    ],
+    "metabolism,": [
+     89
+    ],
+    "well": [
+     91
+    ],
+    "function,": [
+     93
+    ],
+    "which": [
+     94,
+     133
+    ],
+    "discussed": [
+     96
+    ],
+    "concluded": [
+     98
+    ],
+    "this": [
+     100
+    ],
+    "review.": [
+     101
+    ],
+    "possible": [
+     103
+    ],
+    "molecular": [
+     104
+    ],
+    "mechanisms": [
+     105
+    ],
+    "also": [
+     107,
+     189
+    ],
+    "analysed": [
+     108
+    ],
+    "provide": [
+     110,
+     170
+    ],
+    "a": [
+     111
+    ],
+    "clear": [
+     112
+    ],
+    "understanding": [
+     113
+    ],
+    "specific": [
+     116
+    ],
+    "whole": [
+     122
+    ],
+    "development": [
+     123,
+     196
+    ],
+    "process": [
+     124
+    ],
+    "cells.": [
+     127
+    ],
+    "Furthermore,": [
+     128
+    ],
+    "existing": [
+     130
+    ],
+    "methods": [
+     131
+    ],
+    "by": [
+     132,
+     142
+    ],
+    "reverse": [
+     135
+    ],
+    "damage": [
+     137
+    ],
+    "caused": [
+     141
+    ],
+    "microgravity,": [
+     143
+    ],
+    "use": [
+     147
+    ],
+    "polysaccharides,": [
+     149
+    ],
+    "flavonoids,": [
+     150
+    ],
+    "other": [
+     151
+    ],
+    "natural": [
+     152
+    ],
+    "cell": [
+     154,
+     159,
+     182
+    ],
+    "activators": [
+     155
+    ],
+    "etc.": [
+     156
+    ],
+    "target": [
+     158
+    ],
+    "proliferation,": [
+     160
+    ],
+    "apoptosis": [
+     161
+    ],
+    "function": [
+     164,
+     183
+    ],
+    "summarized.": [
+     166
+    ],
+    "This": [
+     167
+    ],
+    "review": [
+     168
+    ],
+    "will": [
+     169
+    ],
+    "not": [
+     171
+    ],
+    "only": [
+     172
+    ],
+    "new": [
+     173
+    ],
+    "directions": [
+     174
+    ],
+    "ideas": [
+     176
+    ],
+    "for": [
+     177,
+     194,
+     203
+    ],
+    "study": [
+     179
+    ],
+    "environment,": [
+     187
+    ],
+    "but": [
+     188
+    ],
+    "important": [
+     191
+    ],
+    "theoretical": [
+     192
+    ],
+    "basis": [
+     193
+    ],
+    "immunosuppression": [
+     198
+    ],
+    "prevention": [
+     199
+    ],
+    "treatment": [
+     201
+    ],
+    "drugs": [
+     202
+    ],
+    "spaceflight.": [
+     204
+    ]
+   },
+   "authorships": [
+    {
+     "author_position": "first",
+     "author": {
+      "id": null,
+      "display_name": "Hongfang Lv",
+      "orcid": null,
+      "observed_orcids": []
+     },
+     "institutions": [
+      {
+       "id": "https://openalex.org/I17145004",
+       "display_name": "Northwestern Polytechnical University",
+       "ror": "https://ror.org/01y0j0j86",
+       "country_code": "CN",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I17145004"
+       ]
+      }
+     ],
+     "countries": [
+      "CN"
+     ],
+     "is_corresponding": false,
+     "contributor_roles": [
+      {
+       "id": "https://openalex.org/contributor-roles/writing-original-draft",
+       "display_name": "Writing – original draft"
+      },
+      {
+       "id": "https://openalex.org/contributor-roles/writing-review-editing",
+       "display_name": "Writing – review & editing"
+      }
+     ],
+     "raw_author_name": "Hongfang Lv",
+     "raw_affiliation_strings": [
+      "Key Laboratory for Space Bioscience and Biotechnology, School of Life Sciences, Northwestern Polytechnical University, Xi'an 710072, People's Republic of China"
+     ],
+     "raw_orcid": null,
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Key Laboratory for Space Bioscience and Biotechnology, School of Life Sciences, Northwestern Polytechnical University, Xi'an 710072, People's Republic of China",
+       "institution_ids": [
+        "https://openalex.org/I17145004"
+       ]
+      }
+     ]
+    },
+    {
+     "author_position": "middle",
+     "author": {
+      "id": "https://openalex.org/A5101874412",
+      "display_name": "Huan Yang",
+      "orcid": "https://orcid.org/0000-0003-2260-7420",
+      "observed_orcids": [
+       "https://orcid.org/0000-0003-2260-7420"
+      ]
+     },
+     "institutions": [
+      {
+       "id": "https://openalex.org/I17145004",
+       "display_name": "Northwestern Polytechnical University",
+       "ror": "https://ror.org/01y0j0j86",
+       "country_code": "CN",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I17145004"
+       ]
+      }
+     ],
+     "countries": [
+      "CN"
+     ],
+     "is_corresponding": false,
+     "contributor_roles": [
+      {
+       "id": "https://openalex.org/contributor-roles/writing-original-draft",
+       "display_name": "Writing – original draft"
+      },
+      {
+       "id": "https://openalex.org/contributor-roles/writing-review-editing",
+       "display_name": "Writing – review & editing"
+      }
+     ],
+     "raw_author_name": "Huan Yang",
+     "raw_affiliation_strings": [
+      "Key Laboratory for Space Bioscience and Biotechnology, School of Life Sciences, Northwestern Polytechnical University, Xi'an 710072, People's Republic of China"
+     ],
+     "raw_orcid": null,
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Key Laboratory for Space Bioscience and Biotechnology, School of Life Sciences, Northwestern Polytechnical University, Xi'an 710072, People's Republic of China",
+       "institution_ids": [
+        "https://openalex.org/I17145004"
+       ]
+      }
+     ]
+    },
+    {
+     "author_position": "middle",
+     "author": {
+      "id": "https://openalex.org/A5026119150",
+      "display_name": "Chunmei Jiang",
+      "orcid": null,
+      "observed_orcids": []
+     },
+     "institutions": [
+      {
+       "id": "https://openalex.org/I17145004",
+       "display_name": "Northwestern Polytechnical University",
+       "ror": "https://ror.org/01y0j0j86",
+       "country_code": "CN",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I17145004"
+       ]
+      }
+     ],
+     "countries": [
+      "CN"
+     ],
+     "is_corresponding": false,
+     "contributor_roles": [
+      {
+       "id": "https://openalex.org/contributor-roles/funding-acquisition",
+       "display_name": "Funding acquisition"
+      },
+      {
+       "id": "https://openalex.org/contributor-roles/writing-review-editing",
+       "display_name": "Writing – review & editing"
+      }
+     ],
+     "raw_author_name": "Chunmei Jiang",
+     "raw_affiliation_strings": [
+      "Key Laboratory for Space Bioscience and Biotechnology, School of Life Sciences, Northwestern Polytechnical University, Xi'an 710072, People's Republic of China"
+     ],
+     "raw_orcid": null,
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Key Laboratory for Space Bioscience and Biotechnology, School of Life Sciences, Northwestern Polytechnical University, Xi'an 710072, People's Republic of China",
+       "institution_ids": [
+        "https://openalex.org/I17145004"
+       ]
+      }
+     ]
+    },
+    {
+     "author_position": "middle",
+     "author": {
+      "id": "https://openalex.org/A5068994684",
+      "display_name": "Junling Shi",
+      "orcid": "https://orcid.org/0000-0002-4643-1792",
+      "observed_orcids": [
+       "https://orcid.org/0000-0002-4643-1792"
+      ]
+     },
+     "institutions": [
+      {
+       "id": "https://openalex.org/I17145004",
+       "display_name": "Northwestern Polytechnical University",
+       "ror": "https://ror.org/01y0j0j86",
+       "country_code": "CN",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I17145004"
+       ]
+      }
+     ],
+     "countries": [
+      "CN"
+     ],
+     "is_corresponding": false,
+     "contributor_roles": [
+      {
+       "id": "https://openalex.org/contributor-roles/supervision",
+       "display_name": "Supervision"
+      },
+      {
+       "id": "https://openalex.org/contributor-roles/writing-review-editing",
+       "display_name": "Writing – review & editing"
+      }
+     ],
+     "raw_author_name": "Junling Shi",
+     "raw_affiliation_strings": [
+      "Key Laboratory for Space Bioscience and Biotechnology, School of Life Sciences, Northwestern Polytechnical University, Xi'an 710072, People's Republic of China"
+     ],
+     "raw_orcid": "https://orcid.org/0000-0002-4643-1792",
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Key Laboratory for Space Bioscience and Biotechnology, School of Life Sciences, Northwestern Polytechnical University, Xi'an 710072, People's Republic of China",
+       "institution_ids": [
+        "https://openalex.org/I17145004"
+       ]
+      }
+     ]
+    },
+    {
+     "author_position": "middle",
+     "author": {
+      "id": "https://openalex.org/A5071878715",
+      "display_name": "Ren-an Chen",
+      "orcid": null,
+      "observed_orcids": []
+     },
+     "institutions": [],
+     "countries": [],
+     "is_corresponding": false,
+     "contributor_roles": [
+      {
+       "id": "https://openalex.org/contributor-roles/funding-acquisition",
+       "display_name": "Funding acquisition"
+      },
+      {
+       "id": "https://openalex.org/contributor-roles/supervision",
+       "display_name": "Supervision"
+      },
+      {
+       "id": "https://openalex.org/contributor-roles/writing-review-editing",
+       "display_name": "Writing – review & editing"
+      }
+     ],
+     "raw_author_name": "Ren-an Chen",
+     "raw_affiliation_strings": [
+      "Hematology Department, Shaanxi Provincial Tumor Hospital, 309 Yanta West Road, Xi'an, Shaanxi 710072, People's Republic of China"
+     ],
+     "raw_orcid": null,
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Hematology Department, Shaanxi Provincial Tumor Hospital, 309 Yanta West Road, Xi'an, Shaanxi 710072, People's Republic of China",
+       "institution_ids": []
+      }
+     ]
+    },
+    {
+     "author_position": "middle",
+     "author": {
+      "id": "https://openalex.org/A5102904916",
+      "display_name": "Qingsheng Huang",
+      "orcid": "https://orcid.org/0000-0003-2742-7154",
+      "observed_orcids": [
+       "https://orcid.org/0000-0003-2742-7154"
+      ]
+     },
+     "institutions": [
+      {
+       "id": "https://openalex.org/I17145004",
+       "display_name": "Northwestern Polytechnical University",
+       "ror": "https://ror.org/01y0j0j86",
+       "country_code": "CN",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I17145004"
+       ]
+      }
+     ],
+     "countries": [
+      "CN"
+     ],
+     "is_corresponding": true,
+     "contributor_roles": [
+      {
+       "id": "https://openalex.org/contributor-roles/conceptualization",
+       "display_name": "Conceptualization"
+      },
+      {
+       "id": "https://openalex.org/contributor-roles/funding-acquisition",
+       "display_name": "Funding acquisition"
+      },
+      {
+       "id": "https://openalex.org/contributor-roles/writing-review-editing",
+       "display_name": "Writing – review & editing"
+      }
+     ],
+     "raw_author_name": "Qingsheng Huang",
+     "raw_affiliation_strings": [
+      "Key Laboratory for Space Bioscience and Biotechnology, School of Life Sciences, Northwestern Polytechnical University, Xi'an 710072, People's Republic of China"
+     ],
+     "raw_orcid": "https://orcid.org/0000-0003-2742-7154",
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Key Laboratory for Space Bioscience and Biotechnology, School of Life Sciences, Northwestern Polytechnical University, Xi'an 710072, People's Republic of China",
+       "institution_ids": [
+        "https://openalex.org/I17145004"
+       ]
+      }
+     ]
+    },
+    {
+     "author_position": "last",
+     "author": {
+      "id": "https://openalex.org/A5030370384",
+      "display_name": "Dongyan Shao",
+      "orcid": "https://orcid.org/0000-0002-6420-4657",
+      "observed_orcids": [
+       "https://orcid.org/0000-0002-6420-4657"
+      ]
+     },
+     "institutions": [
+      {
+       "id": "https://openalex.org/I17145004",
+       "display_name": "Northwestern Polytechnical University",
+       "ror": "https://ror.org/01y0j0j86",
+       "country_code": "CN",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I17145004"
+       ]
+      }
+     ],
+     "countries": [
+      "CN"
+     ],
+     "is_corresponding": true,
+     "contributor_roles": [
+      {
+       "id": "https://openalex.org/contributor-roles/conceptualization",
+       "display_name": "Conceptualization"
+      },
+      {
+       "id": "https://openalex.org/contributor-roles/funding-acquisition",
+       "display_name": "Funding acquisition"
+      },
+      {
+       "id": "https://openalex.org/contributor-roles/writing-review-editing",
+       "display_name": "Writing – review & editing"
+      }
+     ],
+     "raw_author_name": "Dongyan Shao",
+     "raw_affiliation_strings": [
+      "Key Laboratory for Space Bioscience and Biotechnology, School of Life Sciences, Northwestern Polytechnical University, Xi'an 710072, People's Republic of China"
+     ],
+     "raw_orcid": "https://orcid.org/0000-0002-6420-4657",
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Key Laboratory for Space Bioscience and Biotechnology, School of Life Sciences, Northwestern Polytechnical University, Xi'an 710072, People's Republic of China",
+       "institution_ids": [
+        "https://openalex.org/I17145004"
+       ]
+      }
+     ]
+    }
+   ],
+   "primary_location": {
+    "id": "doi:10.1098/rsif.2022.0869",
+    "doi": "https://doi.org/10.1098/rsif.2022.0869",
+    "is_oa": true,
+    "landing_page_url": "https://doi.org/10.1098/rsif.2022.0869",
+    "pdf_url": null,
+    "source": {
+     "id": "https://openalex.org/S129150467",
+     "display_name": "Journal of The Royal Society Interface",
+     "issn_l": "1742-5662",
+     "issn": [
+      "1742-5662",
+      "1742-5689"
+     ],
+     "is_oa": false,
+     "is_in_doaj": false,
+     "is_core": true,
+     "listed_in": [
+      "anvur-scientific",
+      "cwts-core",
+      "dongbi-a",
+      "jufo-1",
+      "ki-jl-1",
+      "medline",
+      "norway-1",
+      "poland-100",
+      "russia-white-list-1",
+      "vabb-shw"
+     ],
+     "host_organization": "https://openalex.org/P4310319787",
+     "host_organization_name": "Royal Society",
+     "host_organization_lineage": [
+      "https://openalex.org/P4310319787"
+     ],
+     "host_organization_lineage_names": [
+      "Royal Society"
+     ],
+     "type": "journal"
+    },
+    "license": "cc-by",
+    "license_id": "https://openalex.org/licenses/cc-by",
+    "version": "publishedVersion",
+    "is_accepted": true,
+    "is_published": true,
+    "raw_source_name": "Journal of The Royal Society Interface",
+    "raw_type": "journal-article"
+   },
+   "open_access": {
+    "is_oa": true,
+    "oa_status": "hybrid",
+    "oa_url": "https://doi.org/10.1098/rsif.2022.0869",
+    "any_repository_has_fulltext": true
+   },
+   "ids": {
+    "openalex": "https://openalex.org/W4320857028",
+    "doi": "https://doi.org/10.1098/rsif.2022.0869",
+    "pmid": "https://pubmed.ncbi.nlm.nih.gov/36789512",
+    "pmcid": "https://www.ncbi.nlm.nih.gov/pmc/articles/9929508"
+   }
+  },
+  {
+   "id": "https://openalex.org/W4375852867",
+   "doi": "https://doi.org/10.1021/acsbiomaterials.3c00195",
+   "title": "Bioprinting in Microgravity",
+   "display_name": "Bioprinting in Microgravity",
+   "publication_year": 2023,
+   "publication_date": "2023-05-08",
+   "language": "en",
+   "type": "review",
+   "abstract_inverted_index": {
+    "Bioprinting": [
+     0
+    ],
+    "as": [
+     1,
+     52,
+     94,
+     97
+    ],
+    "an": [
+     2,
+     103,
+     115
+    ],
+    "extension": [
+     3
+    ],
+    "of": [
+     4,
+     36,
+     70,
+     89,
+     120,
+     132
+    ],
+    "3D": [
+     5,
+     75
+    ],
+    "printing": [
+     6,
+     10
+    ],
+    "offers": [
+     7
+    ],
+    "capabilities": [
+     8
+    ],
+    "for": [
+     9,
+     14,
+     99
+    ],
+    "tissues": [
+     11
+    ],
+    "and": [
+     12,
+     72,
+     86,
+     101,
+     125
+    ],
+    "organs": [
+     13
+    ],
+    "application": [
+     15
+    ],
+    "in": [
+     16,
+     21,
+     32,
+     49,
+     61,
+     110
+    ],
+    "biomedical": [
+     17
+    ],
+    "engineering.": [
+     18,
+     34
+    ],
+    "Conducting": [
+     19
+    ],
+    "bioprinting": [
+     20,
+     76,
+     108
+    ],
+    "space,": [
+     22
+    ],
+    "where": [
+     23
+    ],
+    "the": [
+     24,
+     53,
+     118,
+     130
+    ],
+    "gravity": [
+     25
+    ],
+    "is": [
+     26
+    ],
+    "zero,": [
+     27
+    ],
+    "can": [
+     28,
+     46,
+     63
+    ],
+    "enable": [
+     29
+    ],
+    "new": [
+     30
+    ],
+    "frontiers": [
+     31
+    ],
+    "tissue": [
+     33
+    ],
+    "Fabrication": [
+     35
+    ],
+    "soft": [
+     37
+    ],
+    "tissues,": [
+     38
+    ],
+    "which": [
+     39
+    ],
+    "usually": [
+     40
+    ],
+    "collapse": [
+     41
+    ],
+    "under": [
+     42
+    ],
+    "their": [
+     43
+    ],
+    "own": [
+     44
+    ],
+    "weight,": [
+     45
+    ],
+    "be": [
+     47,
+     64
+    ],
+    "accelerated": [
+     48
+    ],
+    "microgravity": [
+     50,
+     111
+    ],
+    "conditions": [
+     51
+    ],
+    "external": [
+     54
+    ],
+    "forces": [
+     55
+    ],
+    "are": [
+     56
+    ],
+    "eliminated.": [
+     57
+    ],
+    "Furthermore,": [
+     58
+    ],
+    "human": [
+     59
+    ],
+    "colonization": [
+     60
+    ],
+    "space": [
+     62,
+     124
+    ],
+    "supported": [
+     65
+    ],
+    "by": [
+     66,
+     74,
+     84
+    ],
+    "providing": [
+     67,
+     114
+    ],
+    "critical": [
+     68,
+     98
+    ],
+    "needs": [
+     69
+    ],
+    "life": [
+     71
+    ],
+    "ecosystems": [
+     73
+    ],
+    "without": [
+     77
+    ],
+    "relying": [
+     78
+    ],
+    "on": [
+     79,
+     117,
+     129
+    ],
+    "cargos": [
+     80
+    ],
+    "from": [
+     81
+    ],
+    "Earth,": [
+     82
+    ],
+    "e.g.,": [
+     83
+    ],
+    "development": [
+     85
+    ],
+    "long-term": [
+     87
+    ],
+    "employment": [
+     88
+    ],
+    "living": [
+     90
+    ],
+    "engineered": [
+     91
+    ],
+    "filters": [
+     92
+    ],
+    "(such": [
+     93
+    ],
+    "sea": [
+     95
+    ],
+    "sponges-known": [
+     96
+    ],
+    "initiating": [
+     100
+    ],
+    "maintaining": [
+     102
+    ],
+    "ecosystem).": [
+     104
+    ],
+    "This": [
+     105
+    ],
+    "review": [
+     106
+    ],
+    "covers": [
+     107
+    ],
+    "methods": [
+     109
+    ],
+    "along": [
+     112
+    ],
+    "with": [
+     113
+    ],
+    "analysis": [
+     116
+    ],
+    "process": [
+     119
+    ],
+    "shipping": [
+     121
+    ],
+    "bioprinters": [
+     122
+    ],
+    "to": [
+     123
+    ],
+    "presenting": [
+     126
+    ],
+    "a": [
+     127
+    ],
+    "perspective": [
+     128
+    ],
+    "prospects": [
+     131
+    ],
+    "zero-gravity": [
+     133
+    ],
+    "bioprinting.": [
+     134
+    ]
+   },
+   "authorships": [
+    {
+     "author_position": "first",
+     "author": {
+      "id": "https://openalex.org/A5027019174",
+      "display_name": "Misagh Rezapour Sarabi",
+      "orcid": "https://orcid.org/0000-0002-5295-5701",
+      "observed_orcids": [
+       "https://orcid.org/0000-0002-5295-5701"
+      ]
+     },
+     "institutions": [
+      {
+       "id": "https://openalex.org/I1351752",
+       "display_name": "Koç University",
+       "ror": "https://ror.org/00jzwgz36",
+       "country_code": "TR",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I1351752"
+       ]
+      },
+      {
+       "id": "https://openalex.org/I4210135521",
+       "display_name": "Max Planck Institute for Intelligent Systems",
+       "ror": "https://ror.org/04fq9j139",
+       "country_code": "DE",
+       "type": "facility",
+       "lineage": [
+        "https://openalex.org/I149899117",
+        "https://openalex.org/I4210135521"
+       ]
+      }
+     ],
+     "countries": [
+      "DE",
+      "TR"
+     ],
+     "is_corresponding": false,
+     "contributor_roles": [],
+     "raw_author_name": "Misagh Rezapour Sarabi",
+     "raw_affiliation_strings": [
+      "Mechanical Engineering Department, School of Engineering, Koç University, Istanbul, Turkey 34450",
+      "Physical Intelligence Department, Max Planck Institute for Intelligent Systems, Stuttgart, Germany 70569"
+     ],
+     "raw_orcid": "https://orcid.org/0000-0002-5295-5701",
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Mechanical Engineering Department, School of Engineering, Koç University, Istanbul, Turkey 34450",
+       "institution_ids": [
+        "https://openalex.org/I1351752"
+       ]
+      },
+      {
+       "raw_affiliation_string": "Physical Intelligence Department, Max Planck Institute for Intelligent Systems, Stuttgart, Germany 70569",
+       "institution_ids": [
+        "https://openalex.org/I4210135521"
+       ]
+      }
+     ]
+    },
+    {
+     "author_position": "middle",
+     "author": {
+      "id": "https://openalex.org/A5046267439",
+      "display_name": "Ali K. Yetisen",
+      "orcid": "https://orcid.org/0000-0003-0896-267X",
+      "observed_orcids": [
+       "https://orcid.org/0000-0003-0896-267X",
+       "https://orcid.org/0000-0002-0429-9893"
+      ]
+     },
+     "institutions": [
+      {
+       "id": "https://openalex.org/I47508984",
+       "display_name": "Imperial College London",
+       "ror": "https://ror.org/041kmwe10",
+       "country_code": "GB",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I47508984"
+       ]
+      }
+     ],
+     "countries": [
+      "GB"
+     ],
+     "is_corresponding": false,
+     "contributor_roles": [],
+     "raw_author_name": "Ali K. Yetisen",
+     "raw_affiliation_strings": [
+      "Department of Chemical Engineering, Imperial College London, London SW7 2AZ, U.K"
+     ],
+     "raw_orcid": "https://orcid.org/0000-0003-0896-267X",
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Department of Chemical Engineering, Imperial College London, London SW7 2AZ, U.K",
+       "institution_ids": [
+        "https://openalex.org/I47508984"
+       ]
+      }
+     ]
+    },
+    {
+     "author_position": "last",
+     "author": {
+      "id": "https://openalex.org/A5027449159",
+      "display_name": "Savaş Taşoğlu",
+      "orcid": "https://orcid.org/0000-0003-4604-217X",
+      "observed_orcids": [
+       "https://orcid.org/0000-0003-4604-217X"
+      ]
+     },
+     "institutions": [
+      {
+       "id": "https://openalex.org/I1351752",
+       "display_name": "Koç University",
+       "ror": "https://ror.org/00jzwgz36",
+       "country_code": "TR",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I1351752"
+       ]
+      },
+      {
+       "id": "https://openalex.org/I4210135521",
+       "display_name": "Max Planck Institute for Intelligent Systems",
+       "ror": "https://ror.org/04fq9j139",
+       "country_code": "DE",
+       "type": "facility",
+       "lineage": [
+        "https://openalex.org/I149899117",
+        "https://openalex.org/I4210135521"
+       ]
+      },
+      {
+       "id": "https://openalex.org/I4405280879",
+       "display_name": "Koç Üniversitesi Translasyonel Tıp Araştırma Merkezi",
+       "ror": "https://ror.org/03j1wrb54",
+       "country_code": "TR",
+       "type": "facility",
+       "lineage": [
+        "https://openalex.org/I1351752",
+        "https://openalex.org/I4405280879"
+       ]
+      },
+      {
+       "id": "https://openalex.org/I4405392",
+       "display_name": "Boğaziçi University",
+       "ror": "https://ror.org/03z9tma90",
+       "country_code": "TR",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I4405392"
+       ]
+      }
+     ],
+     "countries": [
+      "DE",
+      "TR"
+     ],
+     "is_corresponding": true,
+     "contributor_roles": [],
+     "raw_author_name": "Savas Tasoglu",
+     "raw_affiliation_strings": [
+      "Boğaziçi Institute of Biomedical Engineering, Boğaziçi University, Istanbul, Turkey 34684",
+      "Koç University Arçelik Research Center for Creative Industries (KUAR), Koç University, Istanbul, Turkey 34450",
+      "Koç University Translational Medicine Research Center (KUTTAM), Koç University, Istanbul, Turkey 34450",
+      "Mechanical Engineering Department, School of Engineering, Koç University, Istanbul, Turkey 34450",
+      "Physical Intelligence Department, Max Planck Institute for Intelligent Systems, Stuttgart, Germany 70569"
+     ],
+     "raw_orcid": "https://orcid.org/0000-0003-4604-217X",
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Boğaziçi Institute of Biomedical Engineering, Boğaziçi University, Istanbul, Turkey 34684",
+       "institution_ids": [
+        "https://openalex.org/I4405392"
+       ]
+      },
+      {
+       "raw_affiliation_string": "Koç University Arçelik Research Center for Creative Industries (KUAR), Koç University, Istanbul, Turkey 34450",
+       "institution_ids": [
+        "https://openalex.org/I1351752"
+       ]
+      },
+      {
+       "raw_affiliation_string": "Koç University Translational Medicine Research Center (KUTTAM), Koç University, Istanbul, Turkey 34450",
+       "institution_ids": [
+        "https://openalex.org/I1351752",
+        "https://openalex.org/I4405280879"
+       ]
+      },
+      {
+       "raw_affiliation_string": "Mechanical Engineering Department, School of Engineering, Koç University, Istanbul, Turkey 34450",
+       "institution_ids": [
+        "https://openalex.org/I1351752"
+       ]
+      },
+      {
+       "raw_affiliation_string": "Physical Intelligence Department, Max Planck Institute for Intelligent Systems, Stuttgart, Germany 70569",
+       "institution_ids": [
+        "https://openalex.org/I4210135521"
+       ]
+      }
+     ]
+    }
+   ],
+   "primary_location": {
+    "id": "doi:10.1021/acsbiomaterials.3c00195",
+    "doi": "https://doi.org/10.1021/acsbiomaterials.3c00195",
+    "is_oa": true,
+    "landing_page_url": "https://doi.org/10.1021/acsbiomaterials.3c00195",
+    "pdf_url": "https://pubs.acs.org/doi/pdf/10.1021/acsbiomaterials.3c00195",
+    "source": {
+     "id": "https://openalex.org/S2764739176",
+     "display_name": "ACS Biomaterials Science & Engineering",
+     "issn_l": "2373-9878",
+     "issn": [
+      "2373-9878"
+     ],
+     "is_oa": false,
+     "is_in_doaj": false,
+     "is_core": true,
+     "listed_in": [
+      "cwts-core",
+      "dongbi-c",
+      "jufo-1",
+      "ki-jl-1",
+      "medline",
+      "norway-1",
+      "poland-140",
+      "russia-white-list-2",
+      "vabb-shw"
+     ],
+     "host_organization": "https://openalex.org/P4310320006",
+     "host_organization_name": "American Chemical Society",
+     "host_organization_lineage": [
+      "https://openalex.org/P4310320006"
+     ],
+     "host_organization_lineage_names": [
+      "American Chemical Society"
+     ],
+     "type": "journal"
+    },
+    "license": "cc-by",
+    "license_id": "https://openalex.org/licenses/cc-by",
+    "version": "publishedVersion",
+    "is_accepted": true,
+    "is_published": true,
+    "raw_source_name": "ACS Biomaterials Science &amp; Engineering",
+    "raw_type": "journal-article"
+   },
+   "open_access": {
+    "is_oa": true,
+    "oa_status": "hybrid",
+    "oa_url": "https://pubs.acs.org/doi/pdf/10.1021/acsbiomaterials.3c00195",
+    "any_repository_has_fulltext": true
+   },
+   "ids": {
+    "openalex": "https://openalex.org/W4375852867",
+    "doi": "https://doi.org/10.1021/acsbiomaterials.3c00195",
+    "pmid": "https://pubmed.ncbi.nlm.nih.gov/37155968",
+    "pmcid": "https://www.ncbi.nlm.nih.gov/pmc/articles/10265578"
+   }
+  },
+  {
+   "id": "https://openalex.org/W4387765764",
+   "doi": "https://doi.org/10.4049/immunohorizons.2200063",
+   "title": "The Impact of Microgravity on Immunological States.",
+   "display_name": "The Impact of Microgravity on Immunological States.",
+   "publication_year": 2023,
+   "publication_date": "2023-10-01",
+   "language": "en",
+   "type": "review",
+   "abstract_inverted_index": {
+    "As": [
+     0,
+     74
+    ],
+    "we": [
+     1
+    ],
+    "explore": [
+     2
+    ],
+    "other": [
+     3
+    ],
+    "planetary": [
+     4
+    ],
+    "bodies,": [
+     5
+    ],
+    "astronauts": [
+     6,
+     41
+    ],
+    "will": [
+     7,
+     49
+    ],
+    "face": [
+     8
+    ],
+    "unique": [
+     9,
+     54
+    ],
+    "environmental": [
+     10
+    ],
+    "and": [
+     11,
+     83,
+     116,
+     122
+    ],
+    "physiological": [
+     12
+    ],
+    "challenges.": [
+     13
+    ],
+    "The": [
+     14
+    ],
+    "human": [
+     15,
+     121
+    ],
+    "immune": [
+     16,
+     31,
+     76
+    ],
+    "system": [
+     17
+    ],
+    "has": [
+     18,
+     58,
+     64
+    ],
+    "evolved": [
+     19
+    ],
+    "under": [
+     20
+    ],
+    "Earth's": [
+     21
+    ],
+    "gravitational": [
+     22
+    ],
+    "force.": [
+     23
+    ],
+    "Consequently,": [
+     24
+    ],
+    "in": [
+     25,
+     112,
+     120
+    ],
+    "the": [
+     26,
+     53
+    ],
+    "microgravity": [
+     27,
+     57,
+     118
+    ],
+    "environment": [
+     28,
+     55
+    ],
+    "of": [
+     29,
+     56,
+     114
+    ],
+    "space,": [
+     30
+    ],
+    "function": [
+     32
+    ],
+    "is": [
+     33,
+     106
+    ],
+    "altered.": [
+     34
+    ],
+    "This": [
+     35,
+     94,
+     105
+    ],
+    "can": [
+     36,
+     87,
+     95
+    ],
+    "pose": [
+     37
+    ],
+    "problematic": [
+     38
+    ],
+    "consequences": [
+     39
+    ],
+    "for": [
+     40,
+     101
+    ],
+    "on": [
+     42,
+     103
+    ],
+    "deep": [
+     43
+    ],
+    "space": [
+     44
+    ],
+    "missions": [
+     45
+    ],
+    "where": [
+     46
+    ],
+    "medical": [
+     47
+    ],
+    "intervention": [
+     48
+    ],
+    "be": [
+     50,
+     88
+    ],
+    "limited.": [
+     51
+    ],
+    "Studying": [
+     52
+    ],
+    "its": [
+     59
+    ],
+    "challenges,": [
+     60
+    ],
+    "yet": [
+     61
+    ],
+    "current": [
+     62
+    ],
+    "research": [
+     63
+    ],
+    "uncovered": [
+     65
+    ],
+    "immunological": [
+     66
+    ],
+    "states": [
+     67,
+     77
+    ],
+    "that": [
+     68
+    ],
+    "are": [
+     69,
+     78
+    ],
+    "probable": [
+     70
+    ],
+    "during": [
+     71
+    ],
+    "exploration": [
+     72
+    ],
+    "missions.": [
+     73
+    ],
+    "microgravity-induced": [
+     75
+    ],
+    "uncovered,": [
+     79
+    ],
+    "novel": [
+     80
+    ],
+    "countermeasure": [
+     81
+    ],
+    "developments": [
+     82
+    ],
+    "personalized": [
+     84
+    ],
+    "mitigation": [
+     85
+    ],
+    "programs": [
+     86,
+     100
+    ],
+    "designed": [
+     89
+    ],
+    "to": [
+     90
+    ],
+    "improve": [
+     91
+    ],
+    "astronaut": [
+     92
+    ],
+    "health.": [
+     93
+    ],
+    "also": [
+     96
+    ],
+    "benefit": [
+     97
+    ],
+    "immune-related": [
+     98
+    ],
+    "monitoring": [
+     99
+    ],
+    "disorders": [
+     102
+    ],
+    "Earth.": [
+     104
+    ],
+    "a": [
+     107
+    ],
+    "comprehensive": [
+     108
+    ],
+    "review,": [
+     109
+    ],
+    "including": [
+     110
+    ],
+    "gaps": [
+     111
+    ],
+    "knowledge,": [
+     113
+    ],
+    "simulated": [
+     115
+    ],
+    "spaceflight": [
+     117
+    ],
+    "studies": [
+     119
+    ],
+    "rodent": [
+     123
+    ],
+    "models.": [
+     124
+    ]
+   },
+   "authorships": [
+    {
+     "author_position": "first",
+     "author": {
+      "id": "https://openalex.org/A5012172147",
+      "display_name": "Janelle Hicks",
+      "orcid": null,
+      "observed_orcids": []
+     },
+     "institutions": [
+      {
+       "id": "https://openalex.org/I4405252843",
+       "display_name": "Embry-Riddle Aeronautical University Daytona Beach Florida Campus",
+       "ror": "https://ror.org/001emy730",
+       "country_code": "US",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I4405252843",
+        "https://openalex.org/I84475105"
+       ]
+      },
+      {
+       "id": "https://openalex.org/I84475105",
+       "display_name": "Embry–Riddle Aeronautical University",
+       "ror": "https://ror.org/010jskt71",
+       "country_code": "US",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I84475105"
+       ]
+      }
+     ],
+     "countries": [
+      "US"
+     ],
+     "is_corresponding": false,
+     "contributor_roles": [],
+     "raw_author_name": "Janelle Hicks",
+     "raw_affiliation_strings": [
+      "Department of Human Factors and Behavioral Neurobiology, Embry-Riddle Aeronautical University, Daytona Beach, FL"
+     ],
+     "raw_orcid": null,
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Department of Human Factors and Behavioral Neurobiology, Embry-Riddle Aeronautical University, Daytona Beach, FL",
+       "institution_ids": [
+        "https://openalex.org/I4405252843",
+        "https://openalex.org/I84475105"
+       ]
+      }
+     ]
+    },
+    {
+     "author_position": "middle",
+     "author": {
+      "id": "https://openalex.org/A5104185499",
+      "display_name": "Makaila Olson",
+      "orcid": null,
+      "observed_orcids": []
+     },
+     "institutions": [
+      {
+       "id": "https://openalex.org/I4405252843",
+       "display_name": "Embry-Riddle Aeronautical University Daytona Beach Florida Campus",
+       "ror": "https://ror.org/001emy730",
+       "country_code": "US",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I4405252843",
+        "https://openalex.org/I84475105"
+       ]
+      },
+      {
+       "id": "https://openalex.org/I84475105",
+       "display_name": "Embry–Riddle Aeronautical University",
+       "ror": "https://ror.org/010jskt71",
+       "country_code": "US",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I84475105"
+       ]
+      }
+     ],
+     "countries": [
+      "US"
+     ],
+     "is_corresponding": false,
+     "contributor_roles": [],
+     "raw_author_name": "Makaila Olson",
+     "raw_affiliation_strings": [
+      "Department of Human Factors and Behavioral Neurobiology, Embry-Riddle Aeronautical University, Daytona Beach, FL"
+     ],
+     "raw_orcid": null,
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Department of Human Factors and Behavioral Neurobiology, Embry-Riddle Aeronautical University, Daytona Beach, FL",
+       "institution_ids": [
+        "https://openalex.org/I4405252843",
+        "https://openalex.org/I84475105"
+       ]
+      }
+     ]
+    },
+    {
+     "author_position": "middle",
+     "author": {
+      "id": null,
+      "display_name": "Carol Mitchell",
+      "orcid": null,
+      "observed_orcids": []
+     },
+     "institutions": [
+      {
+       "id": "https://openalex.org/I4405252843",
+       "display_name": "Embry-Riddle Aeronautical University Daytona Beach Florida Campus",
+       "ror": "https://ror.org/001emy730",
+       "country_code": "US",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I4405252843",
+        "https://openalex.org/I84475105"
+       ]
+      },
+      {
+       "id": "https://openalex.org/I84475105",
+       "display_name": "Embry–Riddle Aeronautical University",
+       "ror": "https://ror.org/010jskt71",
+       "country_code": "US",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I84475105"
+       ]
+      }
+     ],
+     "countries": [
+      "US"
+     ],
+     "is_corresponding": false,
+     "contributor_roles": [],
+     "raw_author_name": "Carol Mitchell",
+     "raw_affiliation_strings": [
+      "Department of Human Factors and Behavioral Neurobiology, Embry-Riddle Aeronautical University, Daytona Beach, FL"
+     ],
+     "raw_orcid": null,
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Department of Human Factors and Behavioral Neurobiology, Embry-Riddle Aeronautical University, Daytona Beach, FL",
+       "institution_ids": [
+        "https://openalex.org/I4405252843",
+        "https://openalex.org/I84475105"
+       ]
+      }
+     ]
+    },
+    {
+     "author_position": "middle",
+     "author": {
+      "id": "https://openalex.org/A5054266613",
+      "display_name": "Cassandra M. Juran",
+      "orcid": "https://orcid.org/0000-0002-1563-9777",
+      "observed_orcids": [
+       "https://orcid.org/0000-0002-1563-9777"
+      ]
+     },
+     "institutions": [
+      {
+       "id": "https://openalex.org/I1280536761",
+       "display_name": "Ames Research Center",
+       "ror": "https://ror.org/02acart68",
+       "country_code": "US",
+       "type": "facility",
+       "lineage": [
+        "https://openalex.org/I1280536761",
+        "https://openalex.org/I4210124779"
+       ]
+      },
+      {
+       "id": "https://openalex.org/I4210154041",
+       "display_name": "Blue Marble Space Institute of Science",
+       "ror": "https://ror.org/04yhya597",
+       "country_code": "US",
+       "type": "facility",
+       "lineage": [
+        "https://openalex.org/I4210144256",
+        "https://openalex.org/I4210154041"
+       ]
+      },
+      {
+       "id": "https://openalex.org/I4405252843",
+       "display_name": "Embry-Riddle Aeronautical University Daytona Beach Florida Campus",
+       "ror": "https://ror.org/001emy730",
+       "country_code": "US",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I4405252843",
+        "https://openalex.org/I84475105"
+       ]
+      },
+      {
+       "id": "https://openalex.org/I84475105",
+       "display_name": "Embry–Riddle Aeronautical University",
+       "ror": "https://ror.org/010jskt71",
+       "country_code": "US",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I84475105"
+       ]
+      }
+     ],
+     "countries": [
+      "US"
+     ],
+     "is_corresponding": false,
+     "contributor_roles": [],
+     "raw_author_name": "Cassandra M Juran",
+     "raw_affiliation_strings": [
+      "Department of Human Factors and Behavioral Neurobiology, Embry-Riddle Aeronautical University, Daytona Beach, FL",
+      "NASA Ames Research Center, Space Biosciences Division, Moffett Field, CA",
+      "Blue Marble Space Institute of Science, Seattle, WA"
+     ],
+     "raw_orcid": null,
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Department of Human Factors and Behavioral Neurobiology, Embry-Riddle Aeronautical University, Daytona Beach, FL",
+       "institution_ids": [
+        "https://openalex.org/I4405252843",
+        "https://openalex.org/I84475105"
+       ]
+      },
+      {
+       "raw_affiliation_string": "NASA Ames Research Center, Space Biosciences Division, Moffett Field, CA",
+       "institution_ids": [
+        "https://openalex.org/I1280536761"
+       ]
+      },
+      {
+       "raw_affiliation_string": "Blue Marble Space Institute of Science, Seattle, WA",
+       "institution_ids": [
+        "https://openalex.org/I4210154041"
+       ]
+      }
+     ]
+    },
+    {
+     "author_position": "last",
+     "author": {
+      "id": "https://openalex.org/A5041881133",
+      "display_name": "Amber M. Paul",
+      "orcid": "https://orcid.org/0000-0002-1657-3618",
+      "observed_orcids": [
+       "https://orcid.org/0000-0002-1657-3618"
+      ]
+     },
+     "institutions": [
+      {
+       "id": "https://openalex.org/I1280536761",
+       "display_name": "Ames Research Center",
+       "ror": "https://ror.org/02acart68",
+       "country_code": "US",
+       "type": "facility",
+       "lineage": [
+        "https://openalex.org/I1280536761",
+        "https://openalex.org/I4210124779"
+       ]
+      },
+      {
+       "id": "https://openalex.org/I4210154041",
+       "display_name": "Blue Marble Space Institute of Science",
+       "ror": "https://ror.org/04yhya597",
+       "country_code": "US",
+       "type": "facility",
+       "lineage": [
+        "https://openalex.org/I4210144256",
+        "https://openalex.org/I4210154041"
+       ]
+      },
+      {
+       "id": "https://openalex.org/I4405252843",
+       "display_name": "Embry-Riddle Aeronautical University Daytona Beach Florida Campus",
+       "ror": "https://ror.org/001emy730",
+       "country_code": "US",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I4405252843",
+        "https://openalex.org/I84475105"
+       ]
+      },
+      {
+       "id": "https://openalex.org/I84475105",
+       "display_name": "Embry–Riddle Aeronautical University",
+       "ror": "https://ror.org/010jskt71",
+       "country_code": "US",
+       "type": "education",
+       "lineage": [
+        "https://openalex.org/I84475105"
+       ]
+      }
+     ],
+     "countries": [
+      "US"
+     ],
+     "is_corresponding": false,
+     "contributor_roles": [],
+     "raw_author_name": "Amber M Paul",
+     "raw_affiliation_strings": [
+      "Department of Human Factors and Behavioral Neurobiology, Embry-Riddle Aeronautical University, Daytona Beach, FL",
+      "NASA Ames Research Center, Space Biosciences Division, Moffett Field, CA",
+      "Blue Marble Space Institute of Science, Seattle, WA"
+     ],
+     "raw_orcid": null,
+     "affiliations": [
+      {
+       "raw_affiliation_string": "Department of Human Factors and Behavioral Neurobiology, Embry-Riddle Aeronautical University, Daytona Beach, FL",
+       "institution_ids": [
+        "https://openalex.org/I4405252843",
+        "https://openalex.org/I84475105"
+       ]
+      },
+      {
+       "raw_affiliation_string": "NASA Ames Research Center, Space Biosciences Division, Moffett Field, CA",
+       "institution_ids": [
+        "https://openalex.org/I1280536761"
+       ]
+      },
+      {
+       "raw_affiliation_string": "Blue Marble Space Institute of Science, Seattle, WA",
+       "institution_ids": [
+        "https://openalex.org/I4210154041"
+       ]
+      }
+     ]
+    }
+   ],
+   "primary_location": {
+    "id": "pmh:oai:pubmedcentral.nih.gov:10615652",
+    "doi": "https://doi.org/10.4049/immunohorizons.2200063",
+    "is_oa": true,
+    "landing_page_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/10615652",
+    "pdf_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10615652/pdf/ih2200063.pdf",
+    "source": {
+     "id": "https://openalex.org/S2764455111",
+     "display_name": "PubMed Central",
+     "issn_l": null,
+     "issn": null,
+     "is_oa": true,
+     "is_in_doaj": false,
+     "is_core": false,
+     "listed_in": [],
+     "host_organization": "https://openalex.org/I1299303238",
+     "host_organization_name": "National Institutes of Health",
+     "host_organization_lineage": [
+      "https://openalex.org/I1299303238"
+     ],
+     "host_organization_lineage_names": [],
+     "type": "repository"
+    },
+    "license": "cc-by",
+    "license_id": "https://openalex.org/licenses/cc-by",
+    "version": "publishedVersion",
+    "is_accepted": true,
+    "is_published": true,
+    "raw_source_name": "Immunohorizons",
+    "raw_type": "Text"
+   },
+   "open_access": {
+    "is_oa": true,
+    "oa_status": "green",
+    "oa_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10615652/pdf/ih2200063.pdf",
+    "any_repository_has_fulltext": true
+   },
+   "ids": {
+    "openalex": "https://openalex.org/W4387765764",
+    "doi": "https://doi.org/10.4049/immunohorizons.2200063",
+    "pmid": "https://pubmed.ncbi.nlm.nih.gov/37855736",
+    "pmcid": "https://www.ncbi.nlm.nih.gov/pmc/articles/10615652"
+   }
+  }
+ ],
+ "group_by": []
+}

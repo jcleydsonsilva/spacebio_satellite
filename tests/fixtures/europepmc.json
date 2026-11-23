@@ -1,0 +1,420 @@
+{
+ "version": "6.9",
+ "hitCount": 1025,
+ "nextCursorMark": "AoIIP+GIHyg0OTcyNjIyMg==",
+ "nextPageUrl": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=microgravity+AND+PUB_YEAR%3A2023&cursorMark=AoIIP%2BGIHyg0OTcyNjIyMg%3D%3D&resultType=core&pageSize=3&format=json",
+ "request": {
+  "queryString": "microgravity AND PUB_YEAR:2023",
+  "resultType": "core",
+  "cursorMark": "*",
+  "pageSize": 3,
+  "sort": "",
+  "synonym": false
+ },
+ "resultList": {
+  "result": [
+   {
+    "id": "38071377",
+    "source": "MED",
+    "pmid": "38071377",
+    "pmcid": "PMC10710480",
+    "doi": "10.1038/s41526-023-00336-6",
+    "title": "Space microgravity increases expression of genes associated with proliferation and differentiation in human cardiac spheres.",
+    "authorString": "Hwang H, Rampoldi A, Forghani P, Li D, Fite J, Boland G, Maher K, Xu C.",
+    "authorList": {
+     "author": [
+      {
+       "fullName": "Hwang H",
+       "lastName": "Hwang",
+       "firstName": "Hyun",
+       "initials": "H",
+       "authorId": {
+        "type": "ORCID",
+        "value": "0000-0002-1013-5510"
+       },
+       "authorAffiliationDetailsList": {
+        "authorAffiliation": [
+         {
+          "affiliation": "Department of Pediatrics, Emory University School of Medicine and Children's Healthcare of Atlanta, Atlanta, GA, USA."
+         }
+        ]
+       }
+      },
+      {
+       "fullName": "Rampoldi A",
+       "lastName": "Rampoldi",
+       "firstName": "Antonio",
+       "initials": "A",
+       "authorAffiliationDetailsList": {
+        "authorAffiliation": [
+         {
+          "affiliation": "Department of Pediatrics, Emory University School of Medicine and Children's Healthcare of Atlanta, Atlanta, GA, USA."
+         }
+        ]
+       }
+      },
+      {
+       "fullName": "Forghani P",
+       "lastName": "Forghani",
+       "firstName": "Parvin",
+       "initials": "P",
+       "authorAffiliationDetailsList": {
+        "authorAffiliation": [
+         {
+          "affiliation": "Department of Pediatrics, Emory University School of Medicine and Children's Healthcare of Atlanta, Atlanta, GA, USA."
+         }
+        ]
+       }
+      },
+      {
+       "fullName": "Li D",
+       "lastName": "Li",
+       "firstName": "Dong",
+       "initials": "D",
+       "authorAffiliationDetailsList": {
+        "authorAffiliation": [
+         {
+          "affiliation": "Department of Pediatrics, Emory University School of Medicine and Children's Healthcare of Atlanta, Atlanta, GA, USA."
+         }
+        ]
+       }
+      },
+      {
+       "fullName": "Fite J",
+       "lastName": "Fite",
+       "firstName": "Jordan",
+       "initials": "J",
+       "authorAffiliationDetailsList": {
+        "authorAffiliation": [
+         {
+          "affiliation": "Techshot, Inc., Greenville, IN, USA."
+         }
+        ]
+       }
+      },
+      {
+       "fullName": "Boland G",
+       "lastName": "Boland",
+       "firstName": "Gene",
+       "initials": "G",
+       "authorId": {
+        "type": "ORCID",
+        "value": "0000-0002-4888-9772"
+       },
+       "authorAffiliationDetailsList": {
+        "authorAffiliation": [
+         {
+          "affiliation": "Techshot, Inc., Greenville, IN, USA."
+         }
+        ]
+       }
+      },
+      {
+       "fullName": "Maher K",
+       "lastName": "Maher",
+       "firstName": "Kevin",
+       "initials": "K",
+       "authorAffiliationDetailsList": {
+        "authorAffiliation": [
+         {
+          "affiliation": "Department of Pediatrics, Emory University School of Medicine and Children's Healthcare of Atlanta, Atlanta, GA, USA."
+         }
+        ]
+       }
+      },
+      {
+       "fullName": "Xu C",
+       "lastName": "Xu",
+       "firstName": "Chunhui",
+       "initials": "C",
+       "authorId": {
+        "type": "ORCID",
+        "value": "0000-0003-1748-0648"
+       },
+       "authorAffiliationDetailsList": {
+        "authorAffiliation": [
+         {
+          "affiliation": "Department of Pediatrics, Emory University School of Medicine and Children's Healthcare of Atlanta, Atlanta, GA, USA. chunhui.xu@emory.edu."
+         },
+         {
+          "affiliation": "Wallace H. Coulter Department of Biomedical Engineering, Georgia Institute of Technology and Emory University, Atlanta, GA, USA. chunhui.xu@emory.edu."
+         }
+        ]
+       }
+      }
+     ]
+    },
+    "journalInfo": {
+     "issue": "1",
+     "volume": "9",
+     "journalIssueId": 3672527,
+     "dateOfPublication": "2023 Dec",
+     "monthOfPublication": 12,
+     "yearOfPublication": 2023,
+     "journal": {
+      "medlineAbbreviation": "NPJ Microgravity",
+      "title": "NPJ microgravity",
+      "essn": "2373-8065",
+      "issn": "2373-8065",
+      "nlmid": "101703605",
+      "isoabbreviation": "NPJ Microgravity"
+     },
+     "printPublicationDate": "2023-12-01"
+    },
+    "pubYear": "2023",
+    "abstractText": "Efficient generation of cardiomyocytes from human-induced pluripotent stem cells (hiPSCs) is important for their application in basic and translational studies. Space microgravity can significantly change cell activities and function. Previously, we reported upregulation of genes associated with cardiac proliferation in cardiac progenitors derived from hiPSCs that were exposed to space microgravity for 3 days. Here we investigated the effect of long-term exposure of hiPSC-cardiac progenitors to space microgravity on global gene expression. Cryopreserved 3D hiPSC-cardiac progenitors were sent to the International Space Station (ISS) and cultured for 3 weeks under ISS microgravity and ISS 1 G conditions. RNA-sequencing analyses revealed upregulation of genes associated with cardiac differentiation, proliferation, and cardiac structure/function and downregulation of genes associated with extracellular matrix regulation in the ISS microgravity cultures compared with the ISS 1 G cultures. Gene ontology analysis and Kyoto Encyclopedia of Genes and Genomes mapping identified the upregulation of biological processes, molecular function, cellular components, and pathways associated with cell cycle, cardiac differentiation, and cardiac function. Taking together, these results suggest that space microgravity has a beneficial effect on the differentiation and growth of cardiac progenitors.",
+    "language": "eng",
+    "fullTextUrlList": {
+     "fullTextUrl": [
+      {
+       "availability": "Subscription required",
+       "availabilityCode": "S",
+       "documentStyle": "doi",
+       "site": "DOI",
+       "url": "https://doi.org/10.1038/s41526-023-00336-6"
+      },
+      {
+       "availability": "Open access",
+       "availabilityCode": "OA",
+       "documentStyle": "html",
+       "site": "Europe_PMC",
+       "url": "https://europepmc.org/articles/PMC10710480"
+      },
+      {
+       "availability": "Open access",
+       "availabilityCode": "OA",
+       "documentStyle": "pdf",
+       "site": "Europe_PMC",
+       "url": "https://europepmc.org/articles/PMC10710480?pdf=render"
+      }
+     ]
+    },
+    "pubModel": "Electronic",
+    "pubTypeList": {
+     "pubType": [
+      "research-article",
+      "Journal Article"
+     ]
+    },
+    "publicationStatus": "epublish"
+   },
+   {
+    "id": "PPR771974",
+    "source": "PPR",
+    "doi": "10.21203/rs.3.rs-3485339/v1",
+    "title": "TRPML1 ion channel promote HepaRG cells differentiation under simulated microgravity conditions",
+    "authorString": "Gao M, Fan H, Lü D, Lu Z, Li H, Qi Z, Sun S, Guan D, Long M, Liu S.",
+    "authorList": {
+     "author": [
+      {
+       "fullName": "Gao M",
+       "lastName": "Gao",
+       "firstName": "Ming",
+       "initials": "M"
+      },
+      {
+       "fullName": "Fan H",
+       "lastName": "Fan",
+       "firstName": "Huancai",
+       "initials": "H"
+      },
+      {
+       "fullName": "Lü D",
+       "lastName": "Lü",
+       "firstName": "Dongyuan",
+       "initials": "D"
+      },
+      {
+       "fullName": "Lu Z",
+       "lastName": "Lu",
+       "firstName": "Zheng",
+       "initials": "Z"
+      },
+      {
+       "fullName": "Li H",
+       "lastName": "Li",
+       "firstName": "Hangyu",
+       "initials": "H"
+      },
+      {
+       "fullName": "Qi Z",
+       "lastName": "Qi",
+       "firstName": "Zijuan",
+       "initials": "Z"
+      },
+      {
+       "fullName": "Sun S",
+       "lastName": "Sun",
+       "firstName": "Shujin",
+       "initials": "S"
+      },
+      {
+       "fullName": "Guan D",
+       "lastName": "Guan",
+       "firstName": "Dongshi",
+       "initials": "D",
+       "authorId": {
+        "type": "ORCID",
+        "value": "0000-0002-4433-3662"
+       }
+      },
+      {
+       "fullName": "Long M",
+       "lastName": "Long",
+       "firstName": "Mian",
+       "initials": "M"
+      },
+      {
+       "fullName": "Liu S",
+       "lastName": "Liu",
+       "firstName": "Sijin",
+       "initials": "S"
+      }
+     ]
+    },
+    "pubYear": "2023",
+    "abstractText": "<title>Abstract</title>  <p>Stem cell differentiation must be regulated by intricate and complex interactions between cells and their surrounding environment, ensuring normal organ and tissue morphology such as the liver <sup>1</sup>. Though it is well acknowledged that microgravity provides necessary mechanical force signals for cells fate <sup>2</sup>, how microgravity affects growth, differentiation, and communication is still largely unknown due to the lack of real experimental scenarios and reproducibility tools. Here, we used Rotating Flat Chamber (RFC) to simulate ground-based microgravity effects to study how microgravity affects the differentiation of HepaRG (hepatic progenitor cells) cells. Unexpectedly, we found that simulated microgravity could promote HepaRG cells differentiation which was exhibited as increased expression of Alpha-fetoprotein (AFP), albumin (ALB), and Recombinant Cytokeratin 18 (CK18). Through screening a series of mechanical receptors, we identified that ion channel TRPML1 was critical for the differentiation promotion effect of microgravity. Once TRPML1 was activated by microgravity, the concentration of lysosomal calcium ions was increased to activate the Wnt/β-catenin signaling pathway, which finally led to the enhanced cell differentiation of HepaRG cells. In addition, the cytoskeleton was remodeled under microgravity conditions and then influenced the expression of PI (3,5) P2, which is the best-known activator of TRPML1. In summary, our findings have established a mechanism by which microgravity promotes the differentiation of HepaRG cells through the TRPML1 signaling pathway, which may provide a potential target for the regulation of hepatic stem/progenitor cells differentiation and embryonic liver development under microgravity conditions.</p>",
+    "fullTextUrlList": {
+     "fullTextUrl": [
+      {
+       "availability": "Open access",
+       "availabilityCode": "OA",
+       "documentStyle": "pdf",
+       "site": "Unpaywall",
+       "url": "https://www.researchsquare.com/article/rs-3485339/latest.pdf"
+      },
+      {
+       "availability": "Free",
+       "availabilityCode": "F",
+       "documentStyle": "doi",
+       "site": "DOI",
+       "url": "https://doi.org/10.21203/rs.3.rs-3485339/v1"
+      }
+     ]
+    },
+    "pubTypeList": {
+     "pubType": [
+      "Preprint"
+     ]
+    }
+   },
+   {
+    "id": "PPR777372",
+    "source": "PPR",
+    "doi": "10.21203/rs.3.rs-3778779/v1",
+    "title": "Impact of microgravity on a three-dimensional microphysiologic culture of the human kidney proximal tubule epithelium: cell response to serum and vitamin D",
+    "authorString": "Kelly E, Lindberg K, Jones-Isaac K, Yang J, Bain J, Wang L, MacDonald J, Bammler T, Calamia J, Thummel K, Yeung C, Countryman S, Koenig P, Himmelfarb J.",
+    "authorList": {
+     "author": [
+      {
+       "fullName": "Kelly E",
+       "lastName": "Kelly",
+       "firstName": "Edward",
+       "initials": "E",
+       "authorId": {
+        "type": "ORCID",
+        "value": "0000-0002-6534-9313"
+       }
+      },
+      {
+       "fullName": "Lindberg K",
+       "lastName": "Lindberg",
+       "firstName": "Kevin",
+       "initials": "K"
+      },
+      {
+       "fullName": "Jones-Isaac K",
+       "lastName": "Jones-Isaac",
+       "firstName": "Kendan",
+       "initials": "K"
+      },
+      {
+       "fullName": "Yang J",
+       "lastName": "Yang",
+       "firstName": "Jade",
+       "initials": "J"
+      },
+      {
+       "fullName": "Bain J",
+       "lastName": "Bain",
+       "firstName": "Jacelyn",
+       "initials": "J"
+      },
+      {
+       "fullName": "Wang L",
+       "lastName": "Wang",
+       "firstName": "Lu",
+       "initials": "L"
+      },
+      {
+       "fullName": "MacDonald J",
+       "lastName": "MacDonald",
+       "firstName": "James",
+       "initials": "J"
+      },
+      {
+       "fullName": "Bammler T",
+       "lastName": "Bammler",
+       "firstName": "Theo",
+       "initials": "T"
+      },
+      {
+       "fullName": "Calamia J",
+       "lastName": "Calamia",
+       "firstName": "Justina",
+       "initials": "J"
+      },
+      {
+       "fullName": "Thummel K",
+       "lastName": "Thummel",
+       "firstName": "Kenneth",
+       "initials": "K"
+      },
+      {
+       "fullName": "Yeung C",
+       "lastName": "Yeung",
+       "firstName": "Catherine",
+       "initials": "C"
+      },
+      {
+       "fullName": "Countryman S",
+       "lastName": "Countryman",
+       "firstName": "Stefanie",
+       "initials": "S"
+      },
+      {
+       "fullName": "Koenig P",
+       "lastName": "Koenig",
+       "firstName": "Paul",
+       "initials": "P"
+      },
+      {
+       "fullName": "Himmelfarb J",
+       "lastName": "Himmelfarb",
+       "firstName": "Jonathan",
+       "initials": "J"
+      }
+     ]
+    },
+    "pubYear": "2023",
+    "abstractText": "<title>Abstract</title>  <p>The microgravity environment aboard the International Space Station (ISS) provides a unique stressor that can help understand underlying cellular and molecular drivers of pathological changes observed in astronauts with the ultimate goals of developing strategies to enable long-term spaceflight and better treatment of diseases on Earth. We used this unique environment to evaluate the effects of microgravity on kidney proximal tubule epithelial cell (PTEC) response to serum exposure and vitamin D biotransformation capacity. To test if microgravity alters the pathologic response of the proximal tubule to serum exposure, we treated PTECs cultured in a microphysiological system (PT-MPS) with human serum and measured biomarkers of toxicity and inflammation (KIM-1 and IL-6) and conducted global transcriptomics via RNAseq on cells undergoing flight (microgravity) and respective controls (ground). We also treated 3D cultured PTECs with 25(OH)D<sub>3</sub> (vitamin D) and monitored vitamin D metabolite formation, conducted global transcriptomics via RNAseq, and evaluated transcript expression of CYP27B1, CYP24A1, or CYP3A5 in PTECs undergoing flight (microgravity) and respective ground controls. We demonstrated that microgravity neither altered PTEC metabolism of vitamin D nor did it induce a unique response of PTECs to human serum, suggesting that these fundamental biochemical pathways in the kidney proximal tubule are not significantly altered by short-term exposure to microgravity. Given the prospect of extended spaceflight, more study is needed to determine if these responses are consistent with extended (> 6 month) exposure to microgravity.</p>",
+    "fullTextUrlList": {
+     "fullTextUrl": [
+      {
+       "availability": "Free",
+       "availabilityCode": "F",
+       "documentStyle": "doi",
+       "site": "DOI",
+       "url": "https://doi.org/10.21203/rs.3.rs-3778779/v1"
+      }
+     ]
+    },
+    "pubTypeList": {
+     "pubType": [
+      "Preprint"
+     ]
+    }
+   }
+  ]
+ }
+}
