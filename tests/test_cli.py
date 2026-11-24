@@ -416,3 +416,36 @@ def test_the_core_error_for_a_waiting_computer_maps_to_its_own_exception():
 
     error = error_from_response(403, {"error": {"code": "pending_approval", "message": "wait"}})
     assert isinstance(error, PendingApproval) and error.exit_code == 4 and "administrator" in error.hint
+
+
+def test_a_server_that_answers_html_is_named_in_the_error_with_a_hint(fake_time, capsys, memory_keyring):
+    """A site that does not offer the Satellite API (it answers its home page) must say which server it was, not just 'bad response'."""
+    import threading
+    from http.server import BaseHTTPRequestHandler, HTTPServer
+
+    class Page(BaseHTTPRequestHandler):
+        def do_GET(self):
+            self._send()
+
+        do_POST = do_GET
+
+        def _send(self):
+            body = b"<!DOCTYPE html><html><body>home</body></html>"
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+
+        def log_message(self, *args):
+            pass
+
+    server = HTTPServer(("127.0.0.1", 0), Page)
+    threading.Thread(target=server.serve_forever, daemon=True).start()
+    try:
+        url = f"http://127.0.0.1:{server.server_address[1]}"
+        assert main(["--server", url, "login", "--no-browser", "--label", "x"]) == 1
+    finally:
+        server.shutdown()
+    err = out_err(capsys)[1]
+    assert url in err and "HTTP 200, text/html" in err and "--server" in err and "SPACEBIO_SATELLITE_URL" in err

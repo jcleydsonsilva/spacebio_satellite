@@ -81,7 +81,9 @@ class ApiClient:
         if status >= 400:
             raise error_from_response(status, body, response.headers)
         if not isinstance(body, dict):
-            raise ApiError("bad_response", "The server did not answer with the documented JSON.", status=status)
+            kind = (response.headers.get("Content-Type") or "unknown type").split(";")[0].strip()
+            raise ApiError("bad_response", f"{self.server} did not answer with the documented JSON (HTTP {status}, {kind}).", status=status,
+                           hint="Is that the right server? It may not offer the Satellite API yet. Set another one with --server or SPACEBIO_SATELLITE_URL.")
         if self.api_version and self.api_version.split(".")[0] != API_MAJOR:
             raise UnsupportedApi("unsupported_api", f"The server speaks API {self.api_version}, this program speaks {API_MAJOR}.x.", status=status)
         return body
