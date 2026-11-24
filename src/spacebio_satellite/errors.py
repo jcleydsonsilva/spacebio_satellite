@@ -1,6 +1,6 @@
 """Every way the satellite can fail, with the exit code the command line reports for it.
 
-Exit codes:  0 ok · 1 other failure · 2 wrong usage · 3 sign in needed · 4 not allowed (suspended, consent, scope)
+Exit codes:  0 ok · 1 other failure · 2 wrong usage · 3 sign in needed · 4 not allowed (suspended, consent, scope, waiting for approval)
              5 this client is too old · 6 network or server unavailable · 130 stopped by you (Ctrl-C)
 """
 from __future__ import annotations
@@ -75,6 +75,13 @@ class Suspended(ApiError):
     hint = "This account is suspended from contributing. Contact the SpaceBio moderators if you think this is a mistake."
 
 
+class PendingApproval(ApiError):
+    """The computer is connected but a SpaceBio administrator has not approved it yet (only when the server requires approval)."""
+
+    exit_code = 4
+    hint = "A SpaceBio administrator has to approve this computer. Try again later: `spacebio-satellite status` shows when it is approved."
+
+
 class InsufficientScope(ApiError):
     exit_code = 4
 
@@ -114,7 +121,7 @@ class UnsupportedApi(ApiError):
 
 
 _BY_CODE = {
-    "invalid_token": InvalidToken, "not_consented": NotConsented, "suspended": Suspended, "insufficient_scope": InsufficientScope,
+    "invalid_token": InvalidToken, "not_consented": NotConsented, "suspended": Suspended, "insufficient_scope": InsufficientScope, "pending_approval": PendingApproval,
     "task_not_yours_or_expired": TaskExpired, "duplicate_batch": DuplicateBatch, "too_large": TooLarge, "invalid_payload": InvalidPayload,
     "upgrade_required": UpgradeRequired, "rate_limited": RateLimited, "unavailable": Unavailable,
 }

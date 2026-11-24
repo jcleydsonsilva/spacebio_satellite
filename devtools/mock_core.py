@@ -16,6 +16,7 @@ import json
 import re
 import secrets
 import threading
+import time
 import uuid
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
@@ -64,6 +65,8 @@ class MockCore:
         self.approve_after = 1                         # how many polls answer "authorization_pending" first
         self.slow_down_once = False
         self.deny = False
+        self.approval_seconds = None                   # None: new computers work at once; a number: they wait that long (inf = until approve_all()) for an administrator
+        self.pending = {}                              # token -> the monotonic time at which it counts as approved
         self.tokens = {}                               # token -> device id
         self.device_codes = {}
         self.tasks = []                                # queue of task dicts
@@ -217,8 +220,10 @@ class MockCore:
             token = "sbs_" + secrets.token_urlsafe(32)
             device_id = str(uuid.uuid4())
             self.tokens[token] = device_id
+            if self.approval_seconds is not None:
+                self.pending[token] = time.monotonic() + self.approval_seconds
             return self.send(h, 200, {"access_token": token, "token_type": "Bearer", "expires_at": _iso(datetime.now(timezone.utc) + timedelta(days=90)),
-                                      "scopes": ["harvest:run"], "device_id": device_id})
+                                      "scopes": ["harvest:run"], "device_id": device_id, "approval": "pending" if self.waiting(token) else "approved"})
         token = self.token_of(entry)
         if not token:
             return self.error(h, 401, "invalid_token", "Missing, unknown, expired or revoked token.")
@@ -226,11 +231,15 @@ class MockCore:
         if path == "me" and method == "GET":
             return self.send(h, 200, self.me_body(token), extra)
         if path == "me" and method == "PATCH":
+            if self.waiting(token):
+                return self.error(h, 403, "pending_approval", "This computer is waiting for approval by a SpaceBio administrator.")
             self.focus = [str(x) for x in (body or {}).get("focus", [])]
             return self.send(h, 200, self.me_body(token), extra)
         if path == "device/revoke" and method == "POST":
             self.tokens.pop(token, None)
             return self.send(h, 200, {"revoked": True})
+        if self.waiting(token):
+            return self.error(h, 403, "pending_approval", "This computer is waiting for approval by a SpaceBio administrator. Try again later.")
         if self.account_status == "suspended":
             return self.error(h, 403, "suspended", "Account suspended.")
         if self.account_status == "consent_needed":
@@ -245,10 +254,19 @@ class MockCore:
             return self.batch_status(h, m.group(1), extra)
         return self.error(h, 404, "not_found")
 
+    def waiting(self, token):
+        """True while this computer still waits for an administrator (``approval_seconds`` set and not over, and ``approve_all`` not called)."""
+        deadline = self.pending.get(token)
+        return deadline is not None and time.monotonic() < deadline
+
+    def approve_all(self):
+        self.pending.clear()
+
     def me_body(self, token):
         return {"status": self.account_status, "tier": self.tier, "trust": self.trust, "points_total": self.points_total, "points_today": self.points_today,
                 "daily_points": self.daily_points, "points_left": self.daily_points - self.points_today, "tasks_last_hour": 0, "max_tasks_per_hour": 30, "focus": self.focus,
-                "device": {"id": self.tokens.get(token), "label": "Test", "created_at": _iso(datetime.now(timezone.utc)), "expires_at": _iso(datetime.now(timezone.utc) + timedelta(days=90))},
+                "device": {"id": self.tokens.get(token), "label": "Test", "created_at": _iso(datetime.now(timezone.utc)), "expires_at": _iso(datetime.now(timezone.utc) + timedelta(days=90)),
+                           "approval": "pending" if self.waiting(token) else "approved"},
                 "limits": {"claim_min_interval_s": self.claim_min_interval_s, "max_tasks_per_claim": 1, "max_body_bytes": 2_000_000, "max_records_per_batch": self.max_records_per_batch}}
 
     def claim(self, h, body, extra):
@@ -365,9 +383,11 @@ def main(argv=None):
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--tasks", type=int, default=6, help="how many tasks to offer (cycling over the four databases)")
     parser.add_argument("--approve-after", type=int, default=1)
+    parser.add_argument("--approval-seconds", type=float, default=None, help="new computers wait this many seconds for an administrator before they work (try 60)")
     args = parser.parse_args(argv)
     core = MockCore()
     core.approve_after = args.approve_after
+    core.approval_seconds = args.approval_seconds
     core.start(port=args.port)
     for i in range(args.tasks):
         core.add_task(["europepmc", "pubmed", "crossref", "openalex"][i % 4], task_id=i + 1)

@@ -16,7 +16,7 @@ from dataclasses import dataclass, field
 
 from . import TASK_KINDS
 from .cleaning import clean_records
-from .errors import (ApiError, DuplicateBatch, HostNotAllowed, InvalidPayload, NetworkError, NotConsented, RateLimited, SourceError, StopRequested, Suspended,
+from .errors import (ApiError, DuplicateBatch, HostNotAllowed, InvalidPayload, NetworkError, NotConsented, PendingApproval, RateLimited, SourceError, StopRequested, Suspended,
                      TaskExpired, TooLarge, Unavailable)
 from .fetcher import SourceHttp
 from .outbox import Outbox
@@ -155,6 +155,8 @@ class Runner:
             raise Suspended("suspended", "This account is suspended from contributing.")
         if status == "consent_needed":
             raise NotConsented("not_consented", "Your consent is missing or outdated.")
+        if (me.get("device") or {}).get("approval") == "pending":
+            raise PendingApproval("pending_approval", "This computer is waiting for approval by a SpaceBio administrator.")
 
     def _active_skips(self, options):
         now = self.clock()

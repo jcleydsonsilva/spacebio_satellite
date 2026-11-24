@@ -99,9 +99,13 @@ def cmd_login(args, out):
         lines.append("Warning: a plain file is less safe than a keyring. Anyone who can read your files can use the token.")
     if ENV_TOKEN in os.environ:
         lines.append(f"Note: {ENV_TOKEN} is set in your environment and will be used instead of the stored token.")
-    lines.append("Next: spacebio-satellite run --dry-run")
+    waiting = result.get("approval") == "pending"
+    if waiting:
+        lines.append("This computer now waits for approval by a SpaceBio administrator. Nothing works until then: run `spacebio-satellite status` later to see when it is approved.")
+    else:
+        lines.append("Next: spacebio-satellite run --dry-run")
     out.result({"logged_in": True, "server": ctx.server, "device_id": result.get("device_id"), "label": label, "token_storage": where,
-                "expires_at": result.get("expires_at")}, lines)
+                "expires_at": result.get("expires_at"), "approval": result.get("approval") or "approved"}, lines)
     return 0
 
 
@@ -148,7 +152,7 @@ def cmd_status(args, out):
     data = {"server": ctx.server, "client_version": __version__, "api_version": api.api_version, "latest_client_version": latest, "update_available": newer,
             "status": me.get("status"), "tier": me.get("tier"), "trust": me.get("trust"), "points_total": me.get("points_total"), "points_today": me.get("points_today"),
             "points_left": me.get("points_left"), "daily_points": me.get("daily_points"), "tasks_last_hour": me.get("tasks_last_hour"),
-            "max_tasks_per_hour": me.get("max_tasks_per_hour"), "focus": me.get("focus") or [], "device": me.get("device") or {"label": device.label},
+            "max_tasks_per_hour": me.get("max_tasks_per_hour"), "focus": me.get("focus") or [], "device": me.get("device") or {"label": device.label}, "approval": (me.get("device") or {}).get("approval") or "approved",
             "token_expires": api.token_expires or (me.get("device") or {}).get("expires_at") or device.token_expires_at, "outbox_pending": pending, "local_totals": totals}
     lines = [
         f"Server        {ctx.server}  (API {api.api_version or '?'})",
@@ -162,6 +166,8 @@ def cmd_status(args, out):
     ]
     if newer:
         lines.append(f"A newer version is available: {latest} (you have {__version__}).")
+    if data["approval"] == "pending":
+        lines.append("This computer is waiting for approval by a SpaceBio administrator. Nothing works until then; ask again later.")
     if me.get("status") == "paused":
         lines.append("Contributions are paused on the website.")
     out.result(data, lines)

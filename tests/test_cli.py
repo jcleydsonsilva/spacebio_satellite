@@ -366,3 +366,53 @@ def test_error_classes_have_distinct_documented_exit_codes():
              errors.StopRequested: 130, errors.LoginDenied: 4, errors.Unavailable: 6}
     for cls, code in codes.items():
         assert cls.exit_code == code, cls
+
+
+# ---- a computer that waits for an administrator's approval
+def test_login_says_the_computer_waits_for_approval_and_status_tells_when_it_is_approved(served, fake_time, capsys, memory_keyring):
+    served.approval_seconds = float("inf")
+    assert main(["login", "--no-browser", "--label", "Lab desktop"]) == 0
+    out, _ = out_err(capsys)
+    assert "waits for approval by a SpaceBio administrator" in out and "Next: spacebio-satellite run" not in out
+
+    assert main(["status"]) == 0                                    # asking is allowed while waiting
+    out, _ = out_err(capsys)
+    assert "waiting for approval by a SpaceBio administrator" in out
+
+    served.approve_all()
+    assert main(["status"]) == 0
+    out, _ = out_err(capsys)
+    assert "waiting for approval" not in out and "active · tier newcomer" in out
+
+
+def test_run_while_waiting_for_approval_is_exit_4_with_a_clear_message_and_claims_nothing(served, fake_time, capsys, memory_keyring):
+    served.approval_seconds = float("inf")
+    served.add_task("europepmc")
+    assert main(["login", "--no-browser"]) == 0
+    out_err(capsys)
+    assert main(["run", "--once"]) == 4
+    err = out_err(capsys)[1].lower()
+    assert "waiting for approval" in err and "approve" in err
+    assert not served.requests_to("tasks/claim") and len(served.tasks) == 1
+
+    served.approve_all()
+    assert main(["run", "--once"]) == 0
+    assert served.requests_to("tasks/claim")
+
+
+def test_the_json_result_of_login_and_status_carries_the_approval_state(served, fake_time, capsys, memory_keyring):
+    served.approval_seconds = float("inf")
+    assert main(["--json", "login", "--no-browser"]) == 0
+    assert json_lines(out_err(capsys)[0])[-1]["approval"] == "pending"
+    assert main(["--json", "status"]) == 0
+    assert json_lines(out_err(capsys)[0])[-1]["approval"] == "pending"
+    served.approve_all()
+    assert main(["--json", "status"]) == 0
+    assert json_lines(out_err(capsys)[0])[-1]["approval"] == "approved"
+
+
+def test_the_core_error_for_a_waiting_computer_maps_to_its_own_exception():
+    from spacebio_satellite.errors import PendingApproval, error_from_response
+
+    error = error_from_response(403, {"error": {"code": "pending_approval", "message": "wait"}})
+    assert isinstance(error, PendingApproval) and error.exit_code == 4 and "administrator" in error.hint

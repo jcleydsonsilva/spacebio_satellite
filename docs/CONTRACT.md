@@ -38,6 +38,7 @@ Always HTTP status plus one body shape:
 | 403 | `not_consented` | Consent withdrawn or outdated: reopen the device page |
 | 403 | `suspended` | Account suspended (3 strikes); do not retry |
 | 403 | `insufficient_scope` | Token lacks the scope |
+| 403 | `pending_approval` | The computer is connected but an administrator has not approved it yet (only when the server requires approval). Only `GET /me` and `POST /device/revoke` work until then |
 | 409 | `task_not_yours_or_expired` | Lease expired or task belongs to another device |
 | 404 | `not_found` | Unknown batch or task (also for another device's batch) |
 | 409 | `duplicate_batch` | Same `client_batch_id` already received; `details` is `{"batch_id": "...", "status": "..."}` of the original |
@@ -103,7 +104,7 @@ POST /device/token  {"device_code": "..."}
 → 400 {"error": {"code": "slow_down"}}                  add 5 s to the interval
 → 400 {"error": {"code": "access_denied"}}              the person refused
 → 400 {"error": {"code": "expired_token"}}              start again
-→ 200 {"access_token": "sbs_...", "token_type": "Bearer", "expires_at": "2027-02-21T00:00:00Z",
+→ 200 {"access_token": "sbs_...", "token_type": "Bearer", "expires_at": "2027-02-21T00:00:00Z", "approval": "approved",
        "scopes": ["harvest:run"], "device_id": "uuid"}
 ```
 
@@ -125,12 +126,12 @@ Token facts:
   "points_total": 120, "points_today": 30, "daily_points": 400, "points_left": 370,
   "tasks_last_hour": 2, "max_tasks_per_hour": 30,
   "focus": ["radiation", "microgravity"],
-  "device": {"id": "uuid", "label": "Home laptop", "created_at": "...", "expires_at": "..."},
+  "device": {"id": "uuid", "label": "Home laptop", "created_at": "...", "expires_at": "...", "approval": "approved"},
   "limits": {"claim_min_interval_s": 4, "max_tasks_per_claim": 1, "max_body_bytes": 2000000, "max_records_per_batch": 1000}
 }
 ```
 
-`status` is `active | paused | suspended | consent_needed`. Pausing is done on the website. A paused account gets `200` with `tasks: []` and `reason: "paused"` from `claim`, so a long-running satellite just waits; `403 not_consented` is only for withdrawn or outdated consent.
+`device.approval` is `approved | pending` (`pending` while an administrator has not approved this computer; also returned as `approval` by `POST /device/token`). `status` is `active | paused | suspended | consent_needed`. Pausing is done on the website. A paused account gets `200` with `tasks: []` and `reason: "paused"` from `claim`, so a long-running satellite just waits; `403 not_consented` is only for withdrawn or outdated consent.
 
 ### 2.4 Claim, heartbeat, release
 
@@ -220,7 +221,7 @@ In `contrib/models.py`: `SatelliteDevice` (user, label, **SHA-256 of the token**
 
 ## 5. Governance (`/manage/automation/`)
 
-A Satellites tab for administrators (`/manage/automation/satellites/`, linked from the Automation panel): devices (last seen, client version, status), batches accepted and rejected, trust and strikes, **revoke a device**, **suspend or reinstate an account**, a global switch "accept satellite batches" (when off, `claim` answers `paused` and `batches` answers `503 unavailable`) and the minimum client version. Every admin action is written to `entities.AuditEntry` (`satellite.*` actions).
+A Satellites tab for administrators (`/manage/automation/satellites/`, linked from the Automation panel): devices (last seen, client version, status), batches accepted and rejected, trust and strikes, **approve or refuse a computer** that waits for approval (switch "require approval of each new computer", off by default; turning it off approves whoever was waiting), what each computer sent in the last 7 days, the logins in progress, the disconnected computers, **revoke a device**, **suspend or reinstate an account**, a global switch "accept satellite batches" (when off, `claim` answers `paused` and `batches` answers `503 unavailable`) and the minimum client version. Every admin action is written to `entities.AuditEntry` (`satellite.*` actions).
 
 ## 6. Security checklist (for the implementation)
 
@@ -277,7 +278,8 @@ Everything here is additive: a client written to sections 1 to 10 keeps working.
 
 * **Extra fields.** `GET /` and `GET /me` carry `accepting_batches` (the administrators' switch). `claim` limits also carry `points_left` and `tasks_last_hour`. `heartbeat` answers `{task_id, lease_until, max_lease_until}`, `release` answers `{released, task_id}`, `device/revoke` answers `{revoked: true}`.
 * **A program that could not do the task** sends `error` without records. The answer is `202`, and the batch is at once `retry` with `reason: "given_back"`; the task is back in the pool and nobody is blamed.
-* **Order of checks** on an authenticated call: program version (`426`), token (`401`), per-device rate (`429`), scope (`403`), account state (`403 suspended | not_consented`), then the body. `/me` and `device/revoke` work in every account state, and `device/revoke` and `GET /` skip the version check, so an old or suspended program can still see its state and log out. A paused account may still *send* a batch it had finished; it just gets no new work.
+* **Approval.** With `require_approval` on, a device minted by `POST /device/token` has `approved_at = null`. Right after the token check, every endpoint except `GET /me` and `POST /device/revoke` answers `403 pending_approval` (a `PATCH /me` too). A device that existed before the switch, or one minted while it was off, is approved (`approved_by` is `automatic`, or `before approval existed` for devices from before this feature). The member's consent is separate and comes first: the administrator approves a computer, never the consent.
+* **Order of checks** on an authenticated call: program version (`426`), token (`401`), scope (`403`), approval (`403 pending_approval`), per-device rate (`429`), account state (`403 suspended | not_consented`), then the body. `/me` and `device/revoke` work in every account state, and `device/revoke` and `GET /` skip the version check, so an old or suspended program can still see its state and log out. A paused account may still *send* a batch it had finished; it just gets no new work.
 * **Limits** (all settings, defaults in `contrib/satellite/config.py`): 120 requests a minute per device; 10 login codes an hour and 30 token polls a minute per network address; one `claim` every 4 seconds per device; 10 devices per person; a body of at most 2,000,000 bytes **decompressed** (a gzip bomb is stopped while it inflates); at most 1,000 records; a task may ask for up to 10 pages; a lease is 15 minutes, extendable to 60 by heartbeats.
 * **Release.** `user_stopped`, `rate_limited_by_source` and `unsupported_kind` do not use up one of the task's three attempts; `source_unavailable` and `error` do (after the third the task stops being offered).
 * **Long-poll.** `GET /batches/{id}?wait=N` holds a web thread, so at most `SATELLITE_MAX_WAITERS` (3) are held at once across the site; above that the answer is immediate and the program asks again (it already loops).
