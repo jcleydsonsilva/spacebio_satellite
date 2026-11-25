@@ -133,6 +133,20 @@ Token facts:
 
 `device.approval` is `approved | pending` (`pending` while an administrator has not approved this computer; also returned as `approval` by `POST /device/token`). `status` is `active | paused | suspended | consent_needed`. Pausing is done on the website. A paused account gets `200` with `tasks: []` and `reason: "paused"` from `claim`, so a long-running satellite just waits; `403 not_consented` is only for withdrawn or outdated consent.
 
+### 2.3b `GET /contributions`: what the person added
+
+`GET /contributions?kind=new|completed&page=1&limit=50` (scope `harvest:run`; a computer still waiting for approval gets `403 pending_approval`). The papers this person's work put into the database, newest first: the ones that were **new** to SpaceBio and the ones it already had but that the record **completed** with missing information. It is the same list as the website's "What you added" page (`/contribute/mine/`, with a CSV download), for the browser and for satellites alike, and only the person sees it.
+
+```json
+{"summary": {"new": 114, "completed": 64, "tasks": 30, "points": 800, "first_at": "2026-11-23T01:10:00Z", "last_at": "2026-11-25T03:47:00Z"},
+ "kind": "all", "page": 1, "pages": 4, "total": 178,
+ "items": [{"at": "2026-11-25T03:47:12Z", "kind": "new", "points": 10, "article_id": "10.1038/s41526-026-00612-1",
+            "title": "...", "doi": "10.1038/...", "pmid": "", "journal": "npj Microgravity", "year": "2026", "source": "EuropePMC",
+            "url": "https://doi.org/10.1038/...", "in_library": true}]}
+```
+
+`limit` is 1 to 200 (default 50) and `page` starts at 1; anything else is `422 invalid_payload`. A page past the end has no `items`. A paper that cannot be found by its identifier any more (merged with another record, or removed) keeps its row with `in_library: false` and empty paper data. `points` can be `0` for a paper added after the daily points limit was reached: it still counts as added. Nothing here can change anything: the list is read only.
+
 ### 2.4 Claim, heartbeat, release
 
 ```
@@ -161,6 +175,8 @@ POST /tasks/claim
 No task: `{"tasks": [], "reason": "no_tasks | slow_down | daily_limit | hourly_limit | paused", "retry_after": 900}`.
 
 Rules for the client: contact **only** `allowed_hosts`, at most one request per `min_interval_ms` per host, follow pagination as `request` and the source's own cursor say, stop at `pages`.
+
+The `keyword` is a **phrase**, searched as one (in quotes), never as loose words: the `request.url` of Europe PMC, PubMed and OpenAlex already asks for the exact phrase in title and abstract, so the answer holds the papers that contain it and not whatever shares a few of its words. **Crossref has no phrase search** (its API ignores quotes and answers the same papers with or without them), so for `source: "crossref"` the client must check the phrase itself and send only the papers whose title or abstract contain `keyword` as whole words (ignoring case and punctuation); it may stop after a few pages in a row without a single match. The server still re-checks relevance and discards what is off topic, so a client that does not do this only wastes its own time and the server's.
 
 Heartbeat: `POST /tasks/{id}/heartbeat` extends the lease by the standard lease length up to `max_lease_until`; the answer has the new `lease_until`. Release: `POST /tasks/{id}/release {"reason": "source_unavailable | rate_limited_by_source | user_stopped | unsupported_kind | error", "detail": "optional, 200 chars"}`. Release never counts against the person; an expired lease is the same.
 

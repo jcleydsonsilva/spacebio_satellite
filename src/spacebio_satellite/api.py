@@ -105,6 +105,13 @@ class ApiClient:
     def set_focus(self, focus):
         return self._request("PATCH", "me", body={"focus": list(focus)}, idempotent=True)
 
+    def contributions(self, kind="", page=1, limit=50):
+        """The papers this account added (``new``) or completed, newest first, with the totals."""
+        params = {"page": int(page), "limit": int(limit)}
+        if kind:
+            params["kind"] = kind
+        return self._request("GET", "contributions", params=params)
+
     def claim(self, *, capabilities, focus=None, focus_only=False, skip_sources=(), max_tasks=1, dry_run=False):
         body = {"capabilities": list(capabilities), "focus_only": bool(focus_only), "skip_sources": list(skip_sources), "max_tasks": int(max_tasks), "dry_run": bool(dry_run)}
         if focus is not None:

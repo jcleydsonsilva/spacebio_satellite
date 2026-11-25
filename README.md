@@ -4,7 +4,7 @@ A small command-line program that lets you **lend a little of your computer to S
 
 It asks the SpaceBio core for a small task ("search *microgravity* in Europe PMC for 2023"), runs that search against the public scientific databases **from your computer**, cleans the papers it finds and sends them back. The core then checks a sample of every batch against the original source before it accepts anything. You earn points and a place in the (opt-in) community ranking.
 
-> **Status: alpha (0.1.0).** The program is complete and tested against a faithful stand-in of the SpaceBio core ([`devtools/mock_core.py`](devtools/mock_core.py)) and against the real Europe PMC, PubMed, Crossref and OpenAlex APIs. The server side of the contract ([`docs/CONTRACT.md`](docs/CONTRACT.md)) is being built in the SpaceBio core, so you cannot log in to the production site yet.
+> **Status: alpha (0.2.0).** The program is complete and tested against a faithful stand-in of the SpaceBio core ([`devtools/mock_core.py`](devtools/mock_core.py)) and against the real Europe PMC, PubMed, Crossref and OpenAlex APIs. The server side of the contract ([`docs/CONTRACT.md`](docs/CONTRACT.md)) is being built in the SpaceBio core, so you cannot log in to the production site yet.
 
 ## What it does, and what it never does
 
@@ -60,6 +60,7 @@ spacebio-satellite status             # your points, limits and outbox
 | `focus [WORDS...] [--clear]` | Show or set the topics you prefer (kept on your account). |
 | `outbox [--flush] [--clear [--yes]]` | List, send or discard batches saved locally and not yet confirmed. |
 | `history [-n N]` | What the core decided about your recent batches. |
+| `contributions [--new\|--completed] [--limit N] [--page N]` | The papers you added to SpaceBio, with title, link and points (the same list as the website's "What you added" page). |
 | `privacy` | What leaves your computer. |
 | `doctor` | Check Python, keyring, folders, server, version, clock, login and outbox. |
 | `version` | Print the version. |

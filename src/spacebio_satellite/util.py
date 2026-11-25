@@ -64,3 +64,14 @@ _CONTROL = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 def text_of(value) -> str:
     """Plain text: markup removed, control characters dropped, one space between words."""
     return _SPACES.sub(" ", _TAGS.sub(" ", _CONTROL.sub("", "" if value is None else str(value)))).strip()
+
+
+def has_phrase(phrase, *texts):
+    """True when ``phrase`` appears in one of ``texts`` as whole words, ignoring case, punctuation and spacing ("bone loss in space" is not in "bone loss in spaceflight")."""
+    import re
+
+    def words(text):
+        return " " + re.sub(r"[\W_]+", " ", str(text or "").casefold()).strip() + " "
+
+    wanted = words(phrase)
+    return wanted.strip() != "" and any(wanted in words(t) for t in texts)

@@ -119,6 +119,61 @@ def test_crossref_stops_on_an_empty_page(core):
     assert len(records) == 3 and http.requests_made == 3
 
 
+def test_crossref_keeps_only_the_papers_that_contain_the_phrase(core):
+    """Crossref ignores quotes (the same 100,000+ answers with or without them), so the program checks the phrase itself and does not send the rest."""
+    task = core.make_task("crossref", pages=5, keyword="microgravity")
+    http = SourceHttp(["127.0.0.1"], min_interval_ms=0)
+    source = get_source("crossref")
+    kept = source.collect(task, http, max_records=1000)
+    assert len(kept) == 3 and source.left_out == 0
+    task = core.make_task("crossref", pages=5, keyword="liquid hydrogen tank sloshing")           # none of the three says this
+    http = SourceHttp(["127.0.0.1"], min_interval_ms=0)
+    none = source.collect(task, http, max_records=1000)
+    assert none == [] and source.left_out == 3
+    task = core.make_task("crossref", pages=5, keyword="microgravity")
+    assert len(source.collect(task, SourceHttp(["127.0.0.1"], min_interval_ms=0), max_records=1000)) == 3 and source.left_out == 0     # the count restarts every task
+
+
+def test_crossref_gives_up_after_three_pages_in_a_row_without_the_phrase():
+    """Crossref ranks by loose relevance: 200 papers read for "bone loss in space" and none had the phrase. More pages would only cost time."""
+    class Pages:
+        requests_made = 0
+
+        def get_json(self, url):
+            self.requests_made += 1
+            return {"message": {"items": [{"DOI": f"10.1/{self.requests_made}", "title": ["A paper about something else"]}], "next-cursor": "more"}}
+
+    http = Pages()
+    task = {"id": 1, "keyword": "bone loss in space", "request": {"url": "https://api.crossref.org/works?query=x&cursor=*", "pages": 10, "page_size": 100}}
+    source = get_source("crossref")
+    assert source.collect(task, http, max_records=1000) == [] and http.requests_made == 3 and source.left_out == 3
+
+
+def test_crossref_keeps_reading_while_pages_still_have_the_phrase():
+    class Pages:
+        requests_made = 0
+
+        def get_json(self, url):
+            self.requests_made += 1
+            title = "Bone loss in space: a review" if self.requests_made % 2 else "Something else"
+            return {"message": {"items": [{"DOI": f"10.1/{self.requests_made}", "title": [title]}], "next-cursor": "more"}}
+
+    http = Pages()
+    task = {"id": 1, "keyword": "bone loss in space", "request": {"url": "https://api.crossref.org/works?query=x&cursor=*", "pages": 6, "page_size": 100}}
+    source = get_source("crossref")
+    assert len(source.collect(task, http, max_records=1000)) == 3 and http.requests_made == 6
+
+
+def test_the_phrase_is_matched_as_whole_words_ignoring_case_and_punctuation():
+    from spacebio_satellite.util import has_phrase
+
+    assert has_phrase("bone loss in space", "Bone-loss, in SPACE: a review")
+    assert has_phrase("bone loss in space", "", "abstract: ... bone  loss in space ...")           # any of the texts
+    assert not has_phrase("bone loss in space", "bone loss in spaceflight")                       # not a piece of a longer word
+    assert not has_phrase("bone loss in space", "loss of bone in space")                          # the words in the same order, together
+    assert not has_phrase("", "anything") and not has_phrase("   ", "anything")
+
+
 def test_openalex_stops_without_a_next_cursor(core):
     records, http = collect(core, "openalex", pages=5)
     assert len(records) == 3 and http.requests_made == 2

@@ -5,7 +5,7 @@ databases from YOUR computer, and sends the paper records back. The core never t
 The contract between the two is ``docs/CONTRACT.md``.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 API_MAJOR = "1"                    # the contract's major version this client speaks (``/api/satellite/v1/``)
 TASK_KINDS = ("harvest/1",)        # what this client can run; sent to the core as ``capabilities``
 RECORD_SCHEMAS = ("paper/1",)

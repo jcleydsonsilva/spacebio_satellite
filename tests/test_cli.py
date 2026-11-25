@@ -263,6 +263,58 @@ def test_history_shows_the_verdicts(logged_in, capsys):
     assert main(["history", "-n", "1"]) == 0 and len(out_err(capsys)[0].strip().splitlines()) == 1
 
 
+def paper(kind, title, points, at="2026-11-24T22:49:10Z", **extra):
+    return {"kind": kind, "at": at, "points": points, "article_id": "10.1/x", "title": title, "doi": "10.1/x", "pmid": "", "journal": "Astrobiology", "year": "2026",
+            "source": "EuropePMC", "url": "https://doi.org/10.1/x", "in_library": True, **extra}
+
+
+def test_contributions_lists_what_the_account_added(logged_in, capsys):
+    logged_in.contributions = [paper("new", "Bone loss in space: a review", 10), paper("completed", "Plants on the Moon", 2, at="2026-11-24T21:00:00Z")]
+    assert main(["contributions"]) == 0
+    out = out_err(capsys)[0]
+    assert "You added 1 new paper(s) and completed 1" in out and "12 points" in out
+    assert "2026-11-24 22:49  new       " in out and "Bone loss in space: a review" in out and "[Astrobiology, 2026]" in out
+    assert "completed +2" in out and "https://doi.org/10.1/x" in out
+
+
+def test_contributions_can_be_filtered_and_paged(logged_in, capsys):
+    logged_in.contributions = [paper("new", f"Paper {i}", 10) for i in range(3)] + [paper("completed", "Done one", 2)]
+    assert main(["contributions", "--completed"]) == 0
+    out = out_err(capsys)[0]
+    assert "Done one" in out and "Paper 0" not in out
+    assert main(["contributions", "--new", "--limit", "2"]) == 0
+    out = out_err(capsys)[0]
+    assert "Paper 0" in out and "Paper 2" not in out and "Page 1 of 2" in out and "--page 2" in out
+    assert main(["contributions", "--new", "--limit", "2", "--page", "2"]) == 0
+    assert "Paper 2" in out_err(capsys)[0]
+
+
+def test_contributions_says_so_when_there_is_nothing_and_when_the_page_is_past_the_end(logged_in, capsys):
+    assert main(["contributions"]) == 0 and "Nothing in this list yet" in out_err(capsys)[0]
+    logged_in.contributions = [paper("new", "Only one", 10)]
+    assert main(["contributions", "--page", "5"]) == 0 and "No page 5: there are 1" in out_err(capsys)[0]
+
+
+def test_contributions_marks_a_paper_that_left_the_library_and_has_a_json_form(logged_in, capsys):
+    logged_in.contributions = [paper("new", "", 10, article_id="10.1/gone", in_library=False, url="", journal="", year="")]
+    assert main(["contributions"]) == 0
+    out = out_err(capsys)[0]
+    assert "10.1/gone" in out and "not found in the library by this identifier" in out
+    assert main(["--json", "contributions"]) == 0
+    data = json.loads(capsys.readouterr().out)
+    assert data["total"] == 1 and data["items"][0]["article_id"] == "10.1/gone" and data["summary"]["new"] == 1
+
+
+def test_contributions_needs_a_login(capsys, isolated):
+    assert main(["contributions"]) == 3                                         # "sign in needed"
+    capsys.readouterr()
+
+
+def test_contributions_refuses_new_and_completed_together(logged_in, capsys):
+    assert main(["contributions", "--new", "--completed"]) == 2                 # a usage error, not a silent choice
+    assert "not allowed with" in capsys.readouterr().err
+
+
 def test_history_when_empty(logged_in, capsys):
     assert main(["history"]) == 0 and "No batches yet" in out_err(capsys)[0]
 
@@ -291,8 +343,10 @@ def test_privacy_says_what_leaves_the_computer(capsys):
 
 
 def test_version_and_flag(capsys):
-    assert main(["version"]) == 0 and "spacebio-satellite 0.1.0" in out_err(capsys)[0]
-    assert main(["--version"]) == 0 and "0.1.0" in out_err(capsys)[0]
+    from spacebio_satellite import __version__
+
+    assert main(["version"]) == 0 and f"spacebio-satellite {__version__}" in out_err(capsys)[0]
+    assert main(["--version"]) == 0 and __version__ in out_err(capsys)[0]
 
 
 def test_no_command_prints_help_and_exit_2(capsys):

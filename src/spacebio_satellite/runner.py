@@ -26,6 +26,7 @@ from .util import iso, parse_iso, utcnow
 FINAL = ("accepted", "rejected", "retry")
 SKIP_SOURCE_SECONDS = 6 * 3600
 VERDICT_TIMEOUT = 180
+MAX_UNCHECKED = 3                          # batches the server has not checked in time: past this, more work only piles up on its side, so the run stops
 DEFAULT_MAX_RECORDS = 1000
 RELEASE_REASONS = {"source_unavailable", "rate_limited_by_source", "user_stopped", "unsupported_kind", "error"}
 EXPLAIN = {
@@ -96,6 +97,7 @@ class Runner:
         self.limits: dict = {}
         self.last_claim: float | None = None
         self.stats = RunStats()
+        self.unchecked = 0                 # batches in a row whose verdict did not arrive in time
 
     # ================================================================================================ the loop
     def run(self, options: RunOptions) -> RunStats:
@@ -115,6 +117,11 @@ class Runner:
                     break
                 if options.max_tasks is not None and done >= options.max_tasks:
                     stats.stopped_reason = "max_tasks"
+                    break
+                if self.unchecked >= MAX_UNCHECKED:
+                    stats.stopped_reason = "server_not_checking"
+                    self.out.warn(f"stopping: the server has not checked the last {self.unchecked} batches yet. This is on the server's side (the site's background job that checks "
+                                  "batches may be stopped), not on your computer. Nothing is lost: the batches stay in the outbox and their verdicts are collected on your next run.")
                     break
                 if deadline is not None and self.clock() >= deadline:
                     stats.stopped_reason = "time_up"
@@ -206,6 +213,10 @@ class Runner:
         source = get_source(source_name)
         if source is None:
             return self._release(task, "unsupported_kind", f"source {source_name}", options)
+        if any(entry["task_id"] == tid for entry in self.outbox.pending(self.server)):             # already harvested and sent: the server has not settled it yet
+            self.out.warn(f"{label}: this task was already sent and is still being checked; not doing it twice")
+            self._nap(30)
+            return None
         self.out.stamp(label)
         keeper = LeaseKeeper(self.api, task, self.now, enabled=not options.dry_run)
         pages = [0]
@@ -247,7 +258,9 @@ class Runner:
             self.out.warn(f"{label}: {note}")
         records, cstats = clean_records(raw, max_records=cap)
         batch = {"client_batch_id": str(uuid.uuid4()), "started_at": iso(started), "finished_at": iso(self.now()), "pages_fetched": pages[0], "error": None, "records": records}
-        self.out.stamp(f"   {pages[0]} page(s), {cstats['received']} found, {len(records)} to send ({cstats['invalid']} unusable, {cstats['duplicates']} repeated)")
+        left_out = getattr(source, "left_out", 0)                              # sources that cannot search a phrase (Crossref) leave out what does not contain it
+        without = f", {left_out} without the exact phrase left out" if left_out else ""
+        self.out.stamp(f"   {pages[0]} page(s), {cstats['received']} found{without}, {len(records)} to send ({cstats['invalid']} unusable, {cstats['duplicates']} repeated)")
         if options.dry_run:
             return self._show_dry_run(task, batch, cstats, options)
         self.outbox.add(self.server, tid, batch, source_name, keyword)
@@ -318,8 +331,10 @@ class Runner:
             return None
         verdict = self._await_verdict(batch_id)
         if verdict is None:
-            self.out.stamp(f"   batch {batch_id[:8]} is still being checked; it stays in the outbox")
+            self.unchecked += 1
+            self.out.stamp(f"   batch {batch_id[:8]} was not checked by the server in {VERDICT_TIMEOUT // 60} minutes; it stays safely in the outbox and is collected on the next run")
             return None
+        self.unchecked = 0
         self.outbox.remove(cbid)                                   # the verdict is final: never keep it, even if it ends in a suspension
         self._apply_verdict(entry, batch_id, verdict)
         return verdict

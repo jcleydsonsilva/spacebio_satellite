@@ -86,6 +86,7 @@ class MockCore:
         self.paging_needs_key = set()                  # source names that answer 401 beyond the first page, like OpenAlex does without a key
         self.ignore_capabilities = False               # True: hand out kinds the client did not list (to test its refusal)
         self.lease_minutes = 15
+        self.contributions = []                        # what the person added: [{"kind": "new" | "completed", "at": iso, "title": ..., "points": ..., ...}], newest first
 
     # ================================================================================================ helpers for tests
     @property
@@ -244,6 +245,16 @@ class MockCore:
             return self.error(h, 403, "suspended", "Account suspended.")
         if self.account_status == "consent_needed":
             return self.error(h, 403, "not_consented", "Consent needed.")
+        if path == "contributions" and method == "GET":
+            kind = query.get("kind", "")
+            if kind not in ("", "new", "completed"):
+                return self.error(h, 422, "invalid_payload", "kind must be new or completed (leave it out for both).")
+            items = [i for i in self.contributions if not kind or i["kind"] == kind]
+            limit, number = int(query.get("limit", 50)), int(query.get("page", 1))
+            summary = {"new": sum(1 for i in self.contributions if i["kind"] == "new"), "completed": sum(1 for i in self.contributions if i["kind"] == "completed"),
+                       "tasks": 0, "points": sum(i["points"] for i in self.contributions), "first_at": None, "last_at": None}
+            return self.send(h, 200, {"summary": summary, "kind": kind or "all", "page": number, "pages": max(1, -(-len(items) // limit)), "total": len(items),
+                                      "items": items[(number - 1) * limit: number * limit]}, extra)
         if path == "tasks/claim" and method == "POST":
             return self.claim(h, body or {}, extra)
         m = re.match(r"^tasks/(\d+)/(heartbeat|release|batches)$", path)

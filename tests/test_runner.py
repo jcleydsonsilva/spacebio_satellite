@@ -109,6 +109,46 @@ def test_no_wait_leaves_the_verdict_for_the_next_run_without_sending_again(rig, 
     assert stats.batches == 1 and len(rig.posts("/batches")) == 1 and second.box.pending(core.url) == []
 
 
+def test_a_server_that_does_not_check_batches_stops_the_run_with_a_clear_message(rig, core, capsys):
+    """Regression: with the site's background job stopped, the program kept harvesting and piling batches on the server for hours, saying only "still being checked"."""
+    core.polls_before_final = 10**9                                    # the verdict never becomes final
+    for _ in range(6):
+        core.add_task("europepmc")
+    stats = rig.run()
+    err = capsys.readouterr().err
+    assert stats.stopped_reason == "server_not_checking"
+    assert len(rig.posts("/batches")) == 3 and len(rig.box.pending(core.url)) == 3             # three batches, kept safely, no more work piled up
+    assert "stopping" in err and "server's side" in err and "Nothing is lost" in err
+
+
+def test_a_checked_batch_resets_the_count_of_unchecked_ones(rig, core):
+    core.add_task("europepmc")
+    core.add_task("europepmc")
+    stats = rig.run(max_tasks=2)
+    assert stats.batches == 2 and rig.runner.unchecked == 0 and stats.stopped_reason == "max_tasks"
+
+
+def test_a_task_the_server_hands_out_again_is_not_done_twice(rig, core, capsys):
+    """An older server kept handing out the task whose batch it had not settled yet: the program must not harvest and send it again."""
+    core.polls_before_final = 10**9
+    core.add_task("europepmc")
+    rig.run(max_tasks=1)
+    assert len(rig.posts("/batches")) == 1 and len(rig.box.pending(core.url)) == 1
+    core.tasks.append(core.make_task(task_id=1))                       # the same task, offered again
+    capsys.readouterr()
+    rig.run(max_tasks=1)
+    assert len(rig.posts("/batches")) == 1                             # nothing new was sent (the earlier batch was only asked about again)
+    assert "not doing it twice" in capsys.readouterr().err
+
+
+def test_the_run_says_how_many_crossref_papers_were_left_out_for_not_containing_the_phrase(rig, core, capsys):
+    core.tasks.append(core.make_task("crossref", task_id=1, keyword="liquid hydrogen tank sloshing"))
+    rig.run(max_tasks=1)
+    captured = capsys.readouterr()
+    out = captured.out + captured.err
+    assert "3 without the exact phrase left out" in out and "0 to send" in out
+
+
 # ---------------------------------------------------------------------------------------------------- failures while sending
 def test_an_expired_lease_costs_nothing_and_blames_nobody(rig, core, capsys):
     core.add_task("europepmc")

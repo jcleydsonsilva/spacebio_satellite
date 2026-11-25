@@ -300,6 +300,30 @@ def cmd_history(args, out):
     return 0
 
 
+def cmd_contributions(args, out):
+    """What this account put into SpaceBio, paper by paper: the same list as the website's "What you added" page."""
+    ctx = Context(args)
+    kind = "new" if args.new else "completed" if args.completed else ""
+    answer = ctx.api().contributions(kind=kind, page=args.page, limit=args.limit)
+    totals = answer.get("summary") or {}
+    items = answer.get("items") or []
+    lines = [f"You added {totals.get('new', 0)} new paper(s) and completed {totals.get('completed', 0)} · {totals.get('points', 0)} points in total."]
+    if not items:
+        lines.append("Nothing in this list yet." if answer.get("total") == 0 else f"No page {answer.get('page')}: there are {answer.get('pages')}.")
+    for item in items:
+        label = "new      " if item.get("kind") == "new" else "completed"
+        title = (item.get("title") or item.get("article_id") or "?").replace("\n", " ")
+        where = ", ".join(x for x in (item.get("journal"), item.get("year")) if x)
+        gone = "  (not found in the library by this identifier)" if item.get("in_library") is False else ""
+        lines.append(f"{str(item.get('at', ''))[:16].replace('T', ' ')}  {label} +{item.get('points', 0):<3} {title[:110]}" + (f"  [{where}]" if where else "") + gone)
+        if item.get("url"):
+            lines.append(f"{'':27}{item['url']}")
+    if answer.get("pages", 1) > answer.get("page", 1):
+        lines.append(f"Page {answer.get('page')} of {answer.get('pages')}. Next: spacebio-satellite contributions --page {answer.get('page', 1) + 1}")
+    out.result(answer, lines)
+    return 0
+
+
 def cmd_privacy(args, out):
     out.result({"privacy": privacy_lines()}, privacy_lines())
     return 0
@@ -371,7 +395,7 @@ def cmd_doctor(args, out):
 
 
 COMMANDS = {"login": cmd_login, "logout": cmd_logout, "status": cmd_status, "run": cmd_run, "focus": cmd_focus, "outbox": cmd_outbox, "history": cmd_history,
-            "privacy": cmd_privacy, "doctor": cmd_doctor, "version": cmd_version}
+            "contributions": cmd_contributions, "privacy": cmd_privacy, "doctor": cmd_doctor, "version": cmd_version}
 
 
 # ==================================================================================================== parser
@@ -427,6 +451,13 @@ def build_parser():
 
     p = add("history", "what the core decided about your recent batches")
     p.add_argument("-n", type=int, default=20, help="how many lines (default 20)")
+
+    p = add("contributions", "the papers you added to SpaceBio, with title, link and points")
+    group = p.add_mutually_exclusive_group()
+    group.add_argument("--new", action="store_true", help="only papers that SpaceBio did not have")
+    group.add_argument("--completed", action="store_true", help="only papers SpaceBio had, that your record completed")
+    p.add_argument("--limit", type=int, default=20, help="how many per page (default 20, up to 200)")
+    p.add_argument("--page", type=int, default=1, help="which page (default 1: the newest)")
 
     add("privacy", "what leaves your computer")
     add("doctor", "check your setup: python, keyring, server, version, login, clock")
